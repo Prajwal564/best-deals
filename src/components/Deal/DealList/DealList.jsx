@@ -49,15 +49,7 @@ const DealList = ({ products, category_label }) => {
           style={{ textDecoration: "none" }}
         >
           <Typography variant='h5' color='textSecondary' gutterBottom>
-            {category_label} -
-            <Button
-              color='secondary'
-              variant='text'
-              disableRipple
-              disableFocusRipple
-            >
-              See more
-            </Button>
+            {category_label}
           </Typography>
         </Link>
       </Grid>
@@ -115,18 +107,35 @@ const DealList = ({ products, category_label }) => {
                   </CardContent>
                 </CardActionArea>
                 <CardActions>
-                  <Button variant='outlined' fullWidth disableElevation>
-                    <Link
-                      to={`/category/${category_label}/deals/${i.id}`}
-                      style={{ textDecoration: "none" }}
-                    >
-                      View Details
-                    </Link>
+                  <Button
+                    variant='outlined'
+                    fullWidth
+                    disableElevation
+                    component={Link}
+                    to={`/category/${category_label}/deals/${i.id}`}
+                    color='textSecondary'
+                  >
+                    View Details
                   </Button>
                 </CardActions>
               </Card>
             </Grid>
           ))}
+      </Grid>
+      <Grid container direction='row' justify='center'>
+        <Link
+          to={`/category/${category_label}`}
+          style={{ textDecoration: "none" }}
+        >
+          <Button
+            color='secondary'
+            variant='text'
+            disableRipple
+            disableFocusRipple
+          >
+            See more
+          </Button>
+        </Link>
       </Grid>
     </div>
   );

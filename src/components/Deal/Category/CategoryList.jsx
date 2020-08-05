@@ -106,13 +106,15 @@ const CategoryList = ({ category_label, products }) => {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button variant='contained' fullWidth disableElevation>
-                  <Link
-                    to={`/category/${category_label}/deals/${i.id}`}
-                    style={{ textDecoration: "none" }}
-                  >
-                    View Details
-                  </Link>
+                <Button
+                  variant='outlined'
+                  fullWidth
+                  disableElevation
+                  component={Link}
+                  to={`/category/${category_label}/deals/${i.id}`}
+                  color='textSecondary'
+                >
+                  View Details
                 </Button>
               </CardActions>
             </Card>
