@@ -15,22 +15,20 @@ const useStyles = makeStyles((theme) => ({
     color: "red",
   },
   info: {
-    marginTop: "5vh",
+    marginTop: "1vh",
     display: "flex",
     flexDirection: "column",
   },
   button: {
-    width: "200px",
-    marginTop: "5vh",
+    marginTop: "3vh",
   },
   desc: {
     margin: "2vh 0",
   },
   img: {
-    margin: "5px 5px",
-    objectFit: "cover",
-    justifyContent: "center",
+    margin: "1vh 2vw",
   },
+
   offerDate: {
     marginTop: "2vh",
   },
@@ -40,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   },
   dealMsg: {
     marginTop: "1vh",
+    marginBottom: "1vh",
+    fontStyle: "oblique",
+    color: "green",
   },
 }));
 
@@ -73,15 +74,14 @@ const DealItemDetail = (i) => {
   return (
     <Paper elevation={3} className={classes.root}>
       <Grid container>
-        <Grid item xs={12}>
+        <Grid item xs={12} md={7} className={classes.info}>
           <Typography variant='h5'>{i.title}</Typography>
           <Typography variant='body2' className={classes.offerDate}>
             Offer valid till: {i.endDate}
           </Typography>
 
           {dealNotEnded}
-        </Grid>
-        <Grid item xs={12} md={6} className={classes.info}>
+
           <Typography variant='body1'>
             Original Price:{" "}
             <span className={classes.crossedLine}>${i.normalPrice}</span>
@@ -91,32 +91,47 @@ const DealItemDetail = (i) => {
             You save: ${(i.normalPrice - i.offerPrice).toFixed(2)} (
             {i.offerPercent}%)
           </Typography>
+
           <Typography variant='body1' className={classes.desc}>
-            Description: {i.description}
+            Description: <br />
+            {i.description}
           </Typography>
-          <Typography variant='body2'>
-            Total Review: {i.totalReviews} users
-          </Typography>
+
           <Rating
             name='read-only'
             value={i.reviewRating}
             readOnly
             size='medium'
           />
+          <Typography
+            variant='body2'
+            style={{ fontStyle: "italic", marginTop: "1vh" }}
+          >
+            Total Review: {i.totalReviews} users
+          </Typography>
+
+          {dealEnded}
+        </Grid>
+        <Grid item xs={12} md={4} className={classes.img}>
+          <img
+            src={i.imageUrl}
+            alt={i.title}
+            width='100%'
+            height='auto'
+            object-fit='cover'
+          />
+
           <Button
             href={i.url}
             target='blank'
-            variant='outlined'
+            variant='contained'
             size='medium'
             color='primary'
+            fullWidth
             className={classes.button}
           >
             See Deal
           </Button>
-          {dealEnded}
-        </Grid>
-        <Grid item xs={12} md={5} className={classes.img}>
-          <img src={i.imageUrl} alt={i.title} width='70%' height='auto' />
         </Grid>
       </Grid>
     </Paper>
