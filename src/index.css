@@ -33,3 +33,6 @@ code {
     width: 1170px;
   }
 }
+
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
