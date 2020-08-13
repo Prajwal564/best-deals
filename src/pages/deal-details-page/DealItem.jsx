@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import deal from "../../../data/deal.json";
+import deal from "../../data/deal.json";
 import DealItemDetail from "./DealItemDetail";
 
 const DealItem = ({ match }) => {
