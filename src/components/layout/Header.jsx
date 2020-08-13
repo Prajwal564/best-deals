@@ -1,12 +1,12 @@
-import React from 'react';
-import HeaderBottom from './Header-bottom/HeaderBottom'
+import React from "react";
+import HeaderBottom from "./Header-bottom/HeaderBottom";
 
 const Header = () => {
   return (
     <div>
-      <HeaderBottom/>
+      <HeaderBottom />
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
