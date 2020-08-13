@@ -5,6 +5,7 @@ import { ReactComponent as IncomeHonchoLogo } from "./income_honcho.svg";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,10 +25,12 @@ const HeaderMiddle = () => {
     <div className={classes.root}>
       <Toolbar>
         <div className={classes.logo}>
-          <IncomeHonchoLogo />
+          <Link to='/'>
+            <IncomeHonchoLogo />
+          </Link>
         </div>
 
-        <Button>
+        <Button component={Link} to='/deals'>
           <b>Deals</b>
         </Button>
         <Button>

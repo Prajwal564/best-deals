@@ -1,6 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
@@ -12,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#E4E4E4",
     padding: "0vh 1vw",
+    display: "grid",
   },
   title: {
     flexGrow: 1,
