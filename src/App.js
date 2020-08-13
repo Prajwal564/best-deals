@@ -10,14 +10,14 @@ function App() {
   return (
     <>
       <Header />
-      <div className='container'>
+      {/* <div className="container">
         <Switch>
-          <Route exact path='/' component={Deals} />
-          <Route path='/category/:cid/deals/:did' component={DealItem} />
-          <Route path='/category/:cid' component={Category} />
-          <Redirect from='/' to='/deals' />
+          <Route exact path="/" component={Deals} />
+          <Route path="/category/:cid/deals/:did" component={DealItem} />
+          <Route path="/category/:cid" component={Category} />
+          <Redirect from="/" to="/deals" />
         </Switch>
-      </div>
+      </div> */}
     </>
   );
 }
