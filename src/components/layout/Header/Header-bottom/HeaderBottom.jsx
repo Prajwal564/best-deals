@@ -1,17 +1,11 @@
 import React, { useState } from "react";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
-
 import NativeSelect from "@material-ui/core/NativeSelect";
 
 //Icons
@@ -41,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   search: {
     display: "flex",
     flexDirection: "row",
-    marginLeft: "8%",
+    marginLeft: "11.7%",
     width: "55%",
     alignItems: "center",
     justifyContent: "center",
@@ -123,9 +117,9 @@ export default function HeaderBottom() {
                 inputProps={{ "aria-label": "category" }}
               >
                 <option value="">All Categories</option>
-                <option value={10}>Electronics</option>
-                <option value={20}>Kitchen</option>
-                <option value={30}>Fashion</option>
+                <option value="">Electronics</option>
+                <option value="">Kitchen</option>
+                <option value="">Fashion</option>
               </NativeSelect>
             </FormControl>
 

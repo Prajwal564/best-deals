@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
 import ItemSlider from "../../components/layout/carousel/ItemSlider";
+import ShowCardAll from "../../components/layout/show-card-home/ShowCardAll";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,15 +40,18 @@ const Homepage = () => {
         <Grid item xs={12}>
           <ItemSlider />
         </Grid>
+        <Grid item xs={12} style={{marginTop:"18px"}}>
+          <ShowCardAll />
+        </Grid>
       </Grid>
-      <Grid container sm={3} spacing={3} justify='space-around'>
+      <Grid container sm={3} spacing={3} justify="space-around">
         <Grid item xs={10}>
-          <Paper className={classes.paper} style={{ height: "450px" }}>
+          <Paper className={classes.paper} style={{ height: "350px" }}>
             Advertisement
           </Paper>
         </Grid>
         <Grid item xs={10}>
-          <Paper className={classes.paper} style={{ height: "200px" }}>
+          <Paper className={classes.paper} style={{ height: "150px" }}>
             Advertisement
           </Paper>
         </Grid>

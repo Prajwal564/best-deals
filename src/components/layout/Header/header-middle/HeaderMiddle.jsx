@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    padding: "1vh 2vw",
+    padding: "1vh 0.1vw",
     background: "#ffffff",
   },
   logo: {
@@ -25,12 +25,12 @@ const HeaderMiddle = () => {
     <div className={classes.root}>
       <Toolbar>
         <div className={classes.logo}>
-          <Link to='/'>
+          <Link to="/">
             <IncomeHonchoLogo />
           </Link>
         </div>
 
-        <Button component={Link} to='/deals'>
+        <Button component={Link} to="/deals">
           <b>Deals</b>
         </Button>
         <Button>
