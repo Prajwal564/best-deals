@@ -51,12 +51,11 @@ const useStyles = makeStyles((theme) => ({
   },
   dealEndMsg: {
     color: 'red',
-    marginTop: '3vh',
+    marginTop: '2em',
   },
   dealMsg: {
     marginTop: '1vh',
     marginBottom: '1vh',
-    fontStyle: 'oblique',
     color: 'green',
   },
   socialIcon: {
@@ -86,7 +85,7 @@ const DealItemDetail = (i) => {
   const DealEndedMsg = () => {
     return (
       <Typography variant='body1' className={classes.dealEndMsg}>
-        This offer has expired.
+        <b style={{ color: 'black' }}>Availability: </b>This offer has expired.
       </Typography>
     );
   };
@@ -94,7 +93,8 @@ const DealItemDetail = (i) => {
   const DealNotEndedMsg = () => {
     return (
       <Typography variant='body1' className={classes.dealMsg}>
-        Deals ends {moment(`${i.endDate}`, 'YYYY-MM-DD, hh:mm:ss').fromNow()}
+        <b style={{ color: 'black' }}>Availability: </b>Deals ends{' '}
+        {moment(`${i.endDate}`, 'YYYY-MM-DD, hh:mm:ss').fromNow()}
       </Typography>
     );
   };
@@ -135,7 +135,9 @@ const DealItemDetail = (i) => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Typography variant='body2'>Offer valid till: {i.endDate}</Typography>
+          <Typography variant='body2' style={{ marginBottom: '1em' }}>
+            Offer valid till: {i.endDate}
+          </Typography>
 
           {dealNotEnded}
 
