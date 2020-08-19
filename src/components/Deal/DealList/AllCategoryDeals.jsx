@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import deal from "../../../data/deal.json";
-import DealList from "./DealList";
+import deal from '../../../data/deal.json';
+import DealList from './DealList';
 
-const Deals = () => {
+const AllCategoryDeals = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -23,4 +23,4 @@ const Deals = () => {
   );
 };
 
-export default Deals;
+export default AllCategoryDeals;

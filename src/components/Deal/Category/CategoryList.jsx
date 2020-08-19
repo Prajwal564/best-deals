@@ -1,16 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Rating from "@material-ui/lab/Rating";
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,28 +17,24 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   gridList: {
-    flexWrap: "nowrap",
+    flexWrap: 'nowrap',
   },
   card: {
-    marginBottom: "30px",
+    height: '320px',
   },
   cardContent: {
-    height: "120px",
-    position: "relative",
+    height: '85px',
+    position: 'relative',
   },
   priceText: {
-    position: "absolute",
-    bottom: "0",
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  img: {
-    margin: "5px 5px",
-    objectFit: "cover",
+    position: 'absolute',
+    bottom: '0',
+    display: 'flex',
+    justifyContent: 'space-between',
   },
   crossedLine: {
-    textDecoration: "line-through",
-    color: "red",
+    textDecoration: 'line-through',
+    color: 'red',
   },
 }));
 
@@ -62,19 +57,19 @@ const CategoryList = ({ category_label, products }) => {
       >
         {products.map((i) => (
           <Grid item xs={12} sm={6} md={3} key={i.id}>
-            <Card className={classes.card} raised>
+            <Card key={i.id} className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   component='img'
                   alt={i.title}
-                  height='250'
+                  height='140px'
                   image={i.imageUrl}
                   title={i.title}
-                  className={classes.img}
+                  style={{ paddingTop: '10px' }}
                 />
                 <CardContent className={classes.cardContent}>
-                  <Typography gutterBottom variant='body1' component='h2'>
-                    {i.title.substring(0, 100)}...
+                  <Typography gutterBottom variant='body2' component='h2'>
+                    {i.title.substring(0, 44)}...
                   </Typography>
                   <div className={classes.priceText}>
                     <Typography
@@ -92,16 +87,7 @@ const CategoryList = ({ category_label, products }) => {
                       component='p'
                     >
                       ${i.offerPrice}
-                      &nbsp;
                     </Typography>
-                    &nbsp;&nbsp;
-                    <Rating
-                      name='read-only'
-                      value={i.reviewRating}
-                      readOnly
-                      size='small'
-                      className={classes.rating}
-                    />
                   </div>
                 </CardContent>
               </CardActionArea>

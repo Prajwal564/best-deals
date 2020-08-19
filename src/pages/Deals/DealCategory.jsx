@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-
-import deal from '../../data/deal.json';
-import DealItemDetail from './DealItemDetail';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Category from '../../components/Deal/Category/Category';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,22 +17,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DealItem = ({ match }) => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchItem = async () => {
-      let offerList = deal.offers;
-      setData(offerList);
-    };
-    fetchItem();
-  }, []);
-
+const Deals = ({ match }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Grid container xs={12} md={2} justify='space-around'>
+      <Grid container xs={12} md={2}>
         <Grid item md={10}></Grid>
       </Grid>
       <Grid container md={7} xs={12} spacing={1}>
@@ -44,16 +32,10 @@ const DealItem = ({ match }) => {
           </Paper>
         </Grid>
         <Grid item xs={12}>
-          {data
-            .filter(({ category_label }) => category_label === match.params.cid)
-            .map(({ products }) =>
-              products
-                .filter((product) => product.id === match.params.did)
-                .map(({ id, ...rest }) => <DealItemDetail key={id} {...rest} />)
-            )}
+          <Category match={match} />
         </Grid>
       </Grid>
-      <Grid container xs={12} md={3} spacing={3} justify='space-around'>
+      <Grid container xs={12} md={3} spacing={1} justify='space-around'>
         <Grid item xs={10}>
           <Paper className={classes.paper} style={{ height: '600px' }}>
             Advertisement
@@ -69,4 +51,4 @@ const DealItem = ({ match }) => {
   );
 };
 
-export default DealItem;
+export default Deals;

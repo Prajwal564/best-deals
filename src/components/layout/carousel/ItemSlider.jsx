@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
+import React, { Component } from 'react';
+import Slider from 'react-slick';
 
-import "./ItemSlider.css";
+import './ItemSlider.css';
 
 export default class ItemSlider extends Component {
   render() {
@@ -19,22 +19,22 @@ export default class ItemSlider extends Component {
     return (
       <div>
         <Slider {...settings}>
-          <div className="slider">
+          <div className='slider'>
             <img
-              src="https://images.unsplash.com/photo-1593642703013-5a3b53c965f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1225&q=80"
-              alt="img"
+              src='https://99percentinvisible.org/app/uploads/2019/02/abstract-background-colors.jpg'
+              alt='img'
             />
           </div>
-          <div className="slider">
+          <div className='slider'>
             <img
-              src="https://images.unsplash.com/photo-1518444065439-e933c06ce9cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-              alt="img"
+              src='https://mymodernmet.com/wp/wp-content/uploads/2018/09/basic-color-theory-thumbnail.jpg'
+              alt='img'
             />
           </div>
-          <div className="slider">
+          <div className='slider'>
             <img
-              src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-              alt="img"
+              src='https://media.swncdn.com/via/5793-istockgetty-images-pluspattadis-walarput.jpg'
+              alt='img'
             />
           </div>
         </Slider>
