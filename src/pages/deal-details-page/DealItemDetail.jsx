@@ -65,6 +65,19 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-evenly',
     alignContent: 'flex-start',
   },
+  ribbon: {
+    backgroundColor: '#FF3D00',
+    position: 'absolute',
+    color: 'white',
+    width: 40,
+    zIndex: 3,
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    padding: 5,
+    font: 'Lato',
+    top: 360,
+    marginLeft: -17,
+  },
 }));
 
 const DealItemDetail = (i) => {
@@ -99,6 +112,7 @@ const DealItemDetail = (i) => {
       <Grid container justify='center'>
         <Grid item xs={10} align='center'>
           <div className={classes.image}>
+            <div className={classes.ribbon}>-{i.offerPercent}%</div>
             <img
               src={i.imageUrl}
               alt={i.title}
