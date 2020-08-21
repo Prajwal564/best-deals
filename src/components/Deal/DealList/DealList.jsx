@@ -37,11 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   items: {
     display: 'flex',
-    // padding: '10px 0',
     marginBottom: '10px',
-  },
-  item: {
-    padding: '0 10px',
   },
 }));
 
@@ -59,31 +55,32 @@ const DealList = ({ products, category_label }) => {
           </Typography>
         </Link>
       </Grid>
-      <Grid container className={classes.items}>
+      <Grid container className={classes.items} spacing={1}>
         {products
           .filter((item, idx) => idx < 4)
           .map((i) => (
-            <Grid
-              item
-              key={i.id}
-              className={classes.item}
-              xs={12}
-              sm={6}
-              md={3}
-            >
+            <Grid item key={i.id} xs={12} sm={6} md={3}>
               <Card key={i.id} className={classes.card}>
-                <CardActionArea>
+                <CardActionArea
+                  component={Link}
+                  to={`/category/${category_label}/deals/${i.id}`}
+                >
                   <CardMedia
                     component='img'
                     alt={i.title}
                     height='140px'
                     image={i.imageUrl}
                     title={i.title}
-                    style={{ paddingTop: '10px' }}
+                    style={{ paddingTop: '5px' }}
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant='body2' component='h2'>
-                      {i.title.substring(0, 44)}...
+                    <Typography
+                      gutterBottom
+                      variant='body2'
+                      component='h2'
+                      style={{ textAlign: 'initial' }}
+                    >
+                      {i.title.substring(0, 50)}...
                     </Typography>
                     <div className={classes.priceText}>
                       <Typography

@@ -1,8 +1,8 @@
 .show-card {
   position: relative;
-  width: 30%;
+  width: auto;
   display: flex;
-  height: 40vh;
+  height: auto;
 }
 
 .image {
@@ -11,7 +11,7 @@
   border-radius: 4px;
 }
 img {
-  padding-left: 0%;
+  padding-left: 0;
 }
 
 .caption {
