@@ -3,14 +3,15 @@
   width: 30%;
   display: flex;
   height: 40vh;
-
-  /* background-image: url("https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png"); */
 }
 
 .image {
   height: auto;
   overflow: hidden;
   border-radius: 4px;
+}
+img {
+  padding-left: 0%;
 }
 
 .caption {

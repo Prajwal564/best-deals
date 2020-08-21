@@ -7,6 +7,7 @@ import Paper from "@material-ui/core/Paper";
 
 import ItemSlider from "../../components/layout/carousel/ItemSlider";
 import ShowCardAll from "../../components/layout/show-card-home/ShowCardAll";
+import Sidebar from "../../components/side-bar/Sidebar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
+  sidebarStyle: {
+    marginTop: "-1.2%",
+    marginLeft: "-1.2%",
+  },
 }));
 
 const Homepage = () => {
@@ -26,9 +31,9 @@ const Homepage = () => {
 
   return (
     <div className={classes.root}>
-      <Grid container sm={3}>
+      <Grid container sm={3} className={classes.sidebarStyle}>
         <Grid item md={10}>
-          <Paper className={classes.paper}>content</Paper>
+          <Sidebar />
         </Grid>
       </Grid>
       <Grid container sm={6} spacing={1}>
@@ -40,7 +45,7 @@ const Homepage = () => {
         <Grid item xs={12}>
           <ItemSlider />
         </Grid>
-        <Grid item xs={12} style={{marginTop:"18px"}}>
+        <Grid item xs={12} style={{ marginTop: "18px" }}>
           <ShowCardAll />
         </Grid>
       </Grid>
