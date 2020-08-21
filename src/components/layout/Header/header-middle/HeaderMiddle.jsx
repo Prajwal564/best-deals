@@ -1,7 +1,5 @@
 import React from "react";
-
 import { ReactComponent as IncomeHonchoLogo } from "./income_honcho.svg";
-
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -23,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     padding: "1vh 2vw",
     background: "#ffffff",
   },
+  paper: {
+    width: "60%",
+  },
   logo: {
     flexGrow: 1,
   },
@@ -42,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 const HeaderMiddle = () => {
   const classes = useStyles();
+
   const popupState = usePopupState({
     variant: "popover",
     popupId: "demoPopover",

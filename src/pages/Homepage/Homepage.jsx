@@ -10,6 +10,7 @@ import HotDeal from "../../components/layout/hot-deal/HotDeal";
 import FeaturedDeal from "../../components/layout/featured-deal/FeaturedDeal";
 import ShowCardAll from "../../components/layout/show-card-home/ShowCardAll";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -20,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
     // padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
+  },
+  sidebarStyle: {
+    marginTop: "-1.2%",
+    marginLeft: "-1.2%",
   },
 }));
 
@@ -40,7 +45,8 @@ const Homepage = () => {
         <Grid item xs={12}>
           <ItemSlider />
         </Grid>
-        <Grid item xs={12}>
+
+        <Grid item xs={12} style={{ marginTop: "18px" }}>
           <ShowCardAll />
         </Grid>
 
