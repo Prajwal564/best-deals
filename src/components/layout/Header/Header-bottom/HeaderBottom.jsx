@@ -1,19 +1,35 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+// material ui core
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import FormControl from "@material-ui/core/FormControl";
-import NativeSelect from "@material-ui/core/NativeSelect";
+import Button from "@material-ui/core/Button";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+import Drawer from "@material-ui/core/Drawer";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import List from "@material-ui/core/List";
 
 //Icons
 import MenuIcon from "@material-ui/icons/Menu";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import SearchIcon from "@material-ui/icons/Search";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+
+// deal json file
+import deal from "../../../../data/deal.json";
 
 const useStyles = makeStyles((theme) => ({
-  grow: {
+  root: {
     flexGrow: 1,
   },
   appbarStyle: {
@@ -26,16 +42,13 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    fontFamily: "Roboto",
-    fontStyle: "normal",
     fontWeight: "bold",
     fontSize: "14px",
   },
 
   search: {
     display: "flex",
-    flexDirection: "row",
-    marginLeft: "11.7%",
+    marginLeft: "8%",
     width: "55%",
     alignItems: "center",
     justifyContent: "center",
@@ -48,8 +61,6 @@ const useStyles = makeStyles((theme) => ({
     borderRightStyle: "solid",
     borderRightColor: "#E0DCDC",
     borderRightWidth: "3px",
-    paddingRight: "2%",
-    paddingLeft: "4%",
     width: "25%",
     marginTop: "1%",
     marginBottom: "1%",
@@ -57,12 +68,10 @@ const useStyles = makeStyles((theme) => ({
   },
 
   input: {
-    fontFamily: "Roboto",
-    fontSize: "12px",
-    backgroundColor: "#FFFFFF",
-    paddingLeft: "8%",
-    width: "50%",
+    backgroundColor: "#fff",
+    width: "25vw",
     height: "45px",
+    paddingLeft: "10px",
   },
   searchIcon: {
     display: "flex",
@@ -75,6 +84,10 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
   },
 
+  button: {
+    height: "45px",
+  },
+
   selectEmpty: {
     top: "8px",
     width: "auto",
@@ -82,18 +95,65 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "12px",
     fontFamily: "Roboto",
   },
+  paper: {
+    marginRight: theme.spacing(2),
+  },
+  drawer: {
+    width: "18vw",
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: "18vw",
+  },
+  drawerHeader: {
+    display: "flex",
+    alignItems: "center",
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+    justifyContent: "flex-end",
+  },
 }));
 
 export default function HeaderBottom() {
   const classes = useStyles();
-  const [category, setCategory] = useState("");
+  const theme = useTheme();
+  const [opens, setOpens] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
-  const handleChange = (e) => {
-    setCategory(e.target.value);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleDrawerOpen = () => {
+    setOpens(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpens(false);
+  };
+
+  // deal json file state
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let offerDeal = deal.offers;
+      setData(offerDeal);
+    };
+    fetchData();
+  }, []);
+
+  // -----------
+
   return (
-    <div className={classes.grow}>
+    <div className={classes.root}>
       <AppBar position="static" className={classes.appbarStyle}>
         <Toolbar>
           <IconButton
@@ -101,39 +161,96 @@ export default function HeaderBottom() {
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            onClick={handleDrawerOpen}
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            ALL DEPARTMENT
+          <Typography className={classes.title} variant="button" noWrap>
+            All Department
           </Typography>
 
           <div className={classes.search}>
             <FormControl className={classes.formControl}>
-              <NativeSelect
-                onChange={handleChange}
-                name="category"
-                className={classes.selectEmpty}
-                inputProps={{ "aria-label": "category" }}
+              <Button
+                // ref={anchorRef}
+                aria-haspopup="true"
+                onClick={handleClick}
+                fullWidth
+                className={classes.button}
               >
-                <option value="">All Categories</option>
-                <option value="">Electronics</option>
-                <option value="">Kitchen</option>
-                <option value="">Fashion</option>
-              </NativeSelect>
+                <Typography variant="overlay" style={{ marginRight: "2.2vw" }}>
+                  All Category
+                </Typography>
+                <ArrowDropDownIcon />
+              </Button>
+              <Menu
+                id="long-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={open}
+                onClose={handleClose}
+                PaperProps={{
+                  style: {
+                    maxHeight: 300,
+                    width: "20ch",
+                  },
+                }}
+              >
+                {data.map((i) => (
+                  <MenuItem key={i.category_id} onClick={handleClose}>
+                    {i.category_label}
+                  </MenuItem>
+                ))}
+              </Menu>
             </FormControl>
-
             <InputBase
-              placeholder="Search…"
+              placeholder="Search"
               className={classes.input}
-              inputProps={{ "aria-label": "search" }}
+              fullWidth
             />
-            <div className={classes.searchIcon}>
+
+            <IconButton className={classes.searchIcon} color="inherit">
               <SearchIcon className={classes.icon} />
-            </div>
+            </IconButton>
           </div>
         </Toolbar>
       </AppBar>
+
+      {/* ===== App bar drawer ====== */}
+
+      <Drawer
+        className={classes.drawer}
+        variant="persistent"
+        anchor="left"
+        open={opens}
+        classes={{ paper: classes.drawerPaper }}
+      >
+        <div className={classes.drawerHeader}>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === "ltr" ? (
+              <ChevronLeftIcon />
+            ) : (
+              <ChevronRightIcon />
+            )}
+          </IconButton>
+        </div>
+        <Divider />
+        <List>
+          {data.map(({ category_label }) => (
+            <>
+              <Link
+                to={`/category/${category_label}`}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <ListItem button>
+                  <ListItemText>{category_label}</ListItemText>
+                </ListItem>
+              </Link>
+              <Divider />
+            </>
+          ))}
+        </List>
+      </Drawer>
     </div>
   );
 }

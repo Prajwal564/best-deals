@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import deal from "../../../data/deal.json";
-import CategoryList from "./CategoryList";
+import React, { useEffect, useState } from 'react';
+import deal from '../../../data/deal.json';
+import CategoryList from './CategoryList';
 
 const Category = ({ match }) => {
   const [data, setData] = useState([]);

@@ -6,6 +6,8 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
 import ItemSlider from "../../components/layout/carousel/ItemSlider";
+import HotDeal from "../../components/layout/hot-deal/HotDeal";
+import FeaturedDeal from "../../components/layout/featured-deal/FeaturedDeal";
 import ShowCardAll from "../../components/layout/show-card-home/ShowCardAll";
 
 const useStyles = makeStyles((theme) => ({
@@ -15,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
   paper: {
-    padding: theme.spacing(2),
+    // padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
@@ -26,12 +28,10 @@ const Homepage = () => {
 
   return (
     <div className={classes.root}>
-      <Grid container sm={3}>
-        <Grid item md={10}>
-          <Paper className={classes.paper}>content</Paper>
-        </Grid>
+      <Grid container xs={12} md={2} justify="space-around">
+        <Grid item md={10}></Grid>
       </Grid>
-      <Grid container sm={6} spacing={1}>
+      <Grid container md={7} xs={12} spacing={1}>
         <Grid item xs={12}>
           <Paper className={classes.paper} style={{ height: "90px" }}>
             Advertisement
@@ -40,18 +40,34 @@ const Homepage = () => {
         <Grid item xs={12}>
           <ItemSlider />
         </Grid>
-        <Grid item xs={12} style={{marginTop:"18px"}}>
+        <Grid item xs={12}>
           <ShowCardAll />
         </Grid>
+
+        <Grid item xs={12}>
+          <HotDeal />
+        </Grid>
+        <Grid item xs={12}>
+          <Paper
+            className={classes.paper}
+            style={{ height: "90px", marginTop: "2em" }}
+          >
+            Advertisement
+          </Paper>
+        </Grid>
+
+        <Grid item xs={12}>
+          <FeaturedDeal />
+        </Grid>
       </Grid>
-      <Grid container sm={3} spacing={3} justify="space-around">
+      <Grid container xs={12} md={3} spacing={3} justify="space-around">
         <Grid item xs={10}>
-          <Paper className={classes.paper} style={{ height: "350px" }}>
+          <Paper className={classes.paper} style={{ height: "600px" }}>
             Advertisement
           </Paper>
         </Grid>
         <Grid item xs={10}>
-          <Paper className={classes.paper} style={{ height: "150px" }}>
+          <Paper className={classes.paper} style={{ height: "250px" }}>
             Advertisement
           </Paper>
         </Grid>
