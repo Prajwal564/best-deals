@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   popover: {
     background: '#ffffff',
-    width: '900px',
+    width: '700px',
     height: '250px',
     margin: 10,
   },
