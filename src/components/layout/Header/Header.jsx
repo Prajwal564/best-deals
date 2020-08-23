@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import HeaderTop from './header-top/HeaderTop';
-import HeaderMiddle from './header-middle/HeaderMiddle';
-import HeaderBottom from './Header-bottom/HeaderBottom';
+import HeaderTop from "./header-top/HeaderTop";
+import HeaderMiddle from "./header-middle/HeaderMiddle";
+import HeaderBottom from "./Header-bottom/HeaderBottom";
 
 const Header = () => {
   return (
     <div>
-      <HeaderTop />
+      {/* <HeaderTop /> */}
       <HeaderMiddle />
       <HeaderBottom />
     </div>
