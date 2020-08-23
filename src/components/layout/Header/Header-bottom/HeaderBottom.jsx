@@ -15,6 +15,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
 import Select from '@material-ui/core/Select';
+import { Typography } from '@material-ui/core';
 
 //Icons
 import MenuIcon from '@material-ui/icons/Menu';
@@ -30,10 +31,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   appbarStyle: {
-    position: 'relative',
     width: '100%',
     backgroundColor: '#034376',
-    maxHeight: '70px',
+    height: '65px',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -92,13 +92,19 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   drawer: {
-    width: '18vw',
     flexShrink: 0,
   },
   drawerPaper: {
+    position: 'absolute',
+    top: '131px',
     width: '18vw',
+    height: '100vh',
   },
   drawerHeader: {
+    position: 'sticky',
+    top: 0,
+    zIndex: 1,
+    backgroundColor: 'white',
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
@@ -120,7 +126,7 @@ export default function HeaderBottom() {
   const [opens, setOpens] = useState(false);
 
   const handleDrawerOpen = () => {
-    setOpens(true);
+    setOpens(!opens);
   };
 
   const handleDrawerClose = () => {
@@ -159,7 +165,7 @@ export default function HeaderBottom() {
 
   return (
     <div className={classes.root}>
-      <AppBar position='static' className={classes.appbarStyle}>
+      <AppBar position='sticky' className={classes.appbarStyle}>
         <Toolbar>
           <IconButton
             edge='start'
@@ -207,6 +213,9 @@ export default function HeaderBottom() {
         classes={{ paper: classes.drawerPaper }}
       >
         <div className={classes.drawerHeader}>
+          <Typography className={classes.title} variant='button' noWrap>
+            All Department
+          </Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? (
               <ChevronLeftIcon />
