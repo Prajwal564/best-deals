@@ -6,24 +6,22 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import FormControl from "@material-ui/core/FormControl";
-import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";
+import Select from "@material-ui/core/Select";
+import Typography from "@material-ui/core/Typography";
 
 //Icons
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import SearchIcon from "@material-ui/icons/Search";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 // deal json file
 import deal from "../../../../data/deal.json";
@@ -40,15 +38,12 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  title: {
-    fontWeight: "bold",
-    fontSize: "14px",
-  },
 
   search: {
     display: "flex",
-    marginLeft: "8%",
-    width: "55%",
+    margin: "auto",
+    paddingRight: "10%",
+    width: "60%",
     alignItems: "center",
     justifyContent: "center",
     maxheight: "45px",
@@ -88,11 +83,10 @@ const useStyles = makeStyles((theme) => ({
   },
 
   selectEmpty: {
-    top: "8px",
-    width: "auto",
-    paddingBottom: "6px",
-    fontSize: "12px",
-    fontFamily: "Roboto",
+    width: "100%",
+    backgroundColor: "#ffffff",
+    height: "45px",
+    paddingBottom: "15px",
   },
   paper: {
     marginRight: theme.spacing(2),
@@ -118,18 +112,19 @@ const useStyles = makeStyles((theme) => ({
     ...theme.mixins.toolbar,
     justifyContent: "flex-end",
   },
+  dropdownStyle: {
+    border: "1px solid black",
+    borderRadius: "5%",
+    backgroundColor: "lightgrey",
+  },
 }));
 
 export default function HeaderBottom() {
   const classes = useStyles();
   const theme = useTheme();
   const [opens, setOpens] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const handleDrawerOpen = () => {
     setOpens(!opens);
   };
 
@@ -149,7 +144,23 @@ export default function HeaderBottom() {
     fetchData();
   }, []);
 
-  // -----------
+  // ===========
+
+  // select bar state
+
+  const [select, setSelect] = useState({
+    items: "",
+  });
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    setSelect({
+      ...select,
+      [name]: event.target.value,
+    });
+  };
+
+  // ============
 
   return (
     <div className={classes.root}>
@@ -166,44 +177,23 @@ export default function HeaderBottom() {
           </IconButton>
 
           <div className={classes.search}>
-            <FormControl className={classes.formControl}>
-              <Button
-                // ref={anchorRef}
-                aria-haspopup="true"
-                onClick={handleClick}
-                fullWidth
-                className={classes.button}
+            <FormControl className={classes.formControl} variant="filled">
+              <Select
+                value={select.items}
+                onChange={handleChange}
+                name="items"
+                className={classes.selectEmpty}
+                disableUnderline
+                displayEmpty
+                inputProps={{ "aria-label": "Without label" }}
               >
-                <Typography variant="overlay" style={{ marginRight: "2.2vw" }}>
-                  All Category
-                </Typography>
-                <ArrowDropDownIcon />
-              </Button>
-              <Menu
-                id="long-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={open}
-                onClose={handleClose}
-                PaperProps={{
-                  style: {
-                    maxHeight: 300,
-                    width: "20ch",
-                  },
-                }}
-              >
+                <MenuItem value="">Select Category</MenuItem>
                 {data.map((i) => (
-                  <MenuItem key={i.category_id} onClick={handleClose}>
-                    {i.category_label}
-                  </MenuItem>
+                  <MenuItem value={i.category_id}>{i.category_label}</MenuItem>
                 ))}
-              </Menu>
+              </Select>
             </FormControl>
-            <InputBase
-              placeholder="Search"
-              className={classes.input}
-              fullWidth
-            />
+            <InputBase placeholder="Search" className={classes.input} />
 
             <IconButton className={classes.searchIcon} color="inherit">
               <SearchIcon className={classes.icon} />
