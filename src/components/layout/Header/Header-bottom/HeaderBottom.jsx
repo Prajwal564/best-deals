@@ -213,7 +213,7 @@ export default function HeaderBottom() {
         classes={{ paper: classes.drawerPaper }}
       >
         <div className={classes.drawerHeader}>
-          <Typography className={classes.title} variant='button' noWrap>
+          <Typography variant='overlay' noWrap>
             All Department
           </Typography>
           <IconButton onClick={handleDrawerClose}>

@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     padding: 5,
     font: 'Lato',
-    top: 325,
+    top: 315,
     marginLeft: -17,
   },
 }));

@@ -58,7 +58,10 @@ const CategoryList = ({ category_label, products }) => {
         {products.map((i) => (
           <Grid item xs={12} sm={6} md={3} key={i.id}>
             <Card key={i.id} className={classes.card}>
-              <CardActionArea>
+              <CardActionArea
+                component={Link}
+                to={`/category/${category_label}/deals/${i.id}`}
+              >
                 <CardMedia
                   component='img'
                   alt={i.title}
