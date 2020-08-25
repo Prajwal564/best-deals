@@ -32,7 +32,7 @@ const Deals = ({ match }) => {
             className={classes.paper}
             style={{ height: '89px', width: '729px' }}
           >
-            Advertisement
+            Advertisement- deals
           </Paper>
         </Grid>
         <Grid item xs={12}>

@@ -25,24 +25,40 @@ const Deals = ({ match }) => {
       <Grid container xs={12} md={2}>
         <Grid item md={10}></Grid>
       </Grid>
-      <Grid container md={7} xs={12} spacing={1}>
+      <Grid container md={7} xs={12} align='center' spacing={1}>
         <Grid item xs={12}>
-          <Paper className={classes.paper} style={{ height: '90px' }}>
-            Advertisement
+          <Paper
+            className={classes.paper}
+            style={{ height: '89px', width: '729px' }}
+          >
+            Advertisement- indivdual category
           </Paper>
         </Grid>
         <Grid item xs={12}>
           <Category match={match} />
         </Grid>
       </Grid>
-      <Grid container xs={12} md={3} spacing={1} justify='space-around'>
-        <Grid item xs={10}>
-          <Paper className={classes.paper} style={{ height: '600px' }}>
+      <Grid
+        container
+        xs={12}
+        md={3}
+        spacing={3}
+        direction='column'
+        align='center'
+      >
+        <Grid item>
+          <Paper
+            className={classes.paper}
+            style={{ height: '600px', width: '300px' }}
+          >
             Advertisement
           </Paper>
         </Grid>
-        <Grid item xs={10}>
-          <Paper className={classes.paper} style={{ height: '250px' }}>
+        <Grid item>
+          <Paper
+            className={classes.paper}
+            style={{ width: '300px', height: '250px' }}
+          >
             Advertisement
           </Paper>
         </Grid>

@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import deal from '../../../data/deal.json';
+import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
 import CategoryList from './CategoryList';
+import { selectCollections } from '../../../redux/deals/deal.selectors';
 
-const Category = ({ match }) => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchItem = async () => {
-      let offerItem = deal.offers;
-      setData(offerItem);
-    };
-    fetchItem();
-  }, []);
-
+const Category = ({ match, data }) => {
   return (
     <div>
       {data
@@ -24,4 +17,8 @@ const Category = ({ match }) => {
   );
 };
 
-export default Category;
+const mapStateToProps = createStructuredSelector({
+  data: selectCollections,
+});
+
+export default connect(mapStateToProps)(Category);

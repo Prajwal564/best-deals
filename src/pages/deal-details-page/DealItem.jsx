@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import deal from '../../data/deal.json';
-import DealItemDetail from './DealItemDetail';
+import DealItemPage from './DealItemPage';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -20,16 +19,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const DealItem = ({ match }) => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchItem = async () => {
-      let offerList = deal.offers;
-      setData(offerList);
-    };
-    fetchItem();
-  }, []);
-
   const classes = useStyles();
 
   return (
@@ -47,13 +36,7 @@ const DealItem = ({ match }) => {
           </Paper>
         </Grid>
         <Grid item xs={12}>
-          {data
-            .filter(({ category_label }) => category_label === match.params.cid)
-            .map(({ products }) =>
-              products
-                .filter((product) => product.id === match.params.did)
-                .map(({ id, ...rest }) => <DealItemDetail key={id} {...rest} />)
-            )}
+          <DealItemPage match={match} />
         </Grid>
       </Grid>
       <Grid
