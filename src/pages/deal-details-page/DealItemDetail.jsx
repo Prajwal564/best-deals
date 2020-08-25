@@ -159,7 +159,9 @@ const DealItemDetail = (i) => {
           </Typography>
 
           <Typography variant='body1' style={{ marginTop: '1em' }}>
-            A total of {i.totalReviews} users have reviewed this product.
+            A total of <b>{i.totalReviews} users </b> have reviewed this product
+            with the review rating of{' '}
+            <b> {i.reviewRating.toFixed(1)} out of 5 </b>.
           </Typography>
 
           {dealEnded}
