@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // material ui core
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -18,9 +18,9 @@ import Select from '@material-ui/core/Select';
 import { Typography } from '@material-ui/core';
 
 //Icons
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+// import MenuIcon from '@material-ui/icons/Menu';
+// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import SearchIcon from '@material-ui/icons/Search';
 
 // deal json file
@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
   appbarStyle: {
     width: '100%',
     backgroundColor: '#034376',
-    height: '65px',
+    top: '60px',
+    // height: '65px',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -91,14 +92,41 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     marginRight: theme.spacing(2),
   },
+  menuPaper: {
+    maxHeight: 500,
+    maxWidth: 50,
+    '&::-webkit-scrollbar': {
+      width: '0.4em',
+    },
+    '&::-webkit-scrollbar-track': {
+      boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+      webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'rgba(0,0,0,.1)',
+      outline: '1px solid slategrey',
+    },
+  },
   drawer: {
     flexShrink: 0,
   },
   drawerPaper: {
-    position: 'absolute',
-    top: '131px',
-    width: '18vw',
-    height: '100vh',
+    position: 'fixed',
+    top: '125px',
+    bottom: '15px',
+    // width: '18vw',
+    height: '90vh',
+    '&::-webkit-scrollbar': {
+      width: '0.6em',
+    },
+    '&::-webkit-scrollbar-track': {
+      boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+      webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'rgba(0,0,0,.1)',
+      outline: '1px solid slategrey',
+    },
   },
   drawerHeader: {
     position: 'sticky',
@@ -121,17 +149,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HeaderBottom() {
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
 
-  const [opens, setOpens] = useState(false);
+  // const [opens, setOpens] = useState(false);
 
-  const handleDrawerOpen = () => {
-    setOpens(!opens);
-  };
+  // const handleDrawerOpen = () => {
+  //   setOpens(!opens);
+  // };
 
-  const handleDrawerClose = () => {
-    setOpens(false);
-  };
+  // const handleDrawerClose = () => {
+  //   setOpens(false);
+  // };
 
   // deal json file state
 
@@ -165,9 +193,9 @@ export default function HeaderBottom() {
 
   return (
     <div className={classes.root}>
-      <AppBar position='sticky' className={classes.appbarStyle}>
+      <AppBar position='fixed' className={classes.appbarStyle}>
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             edge='start'
             className={classes.menuButton}
             color='inherit'
@@ -175,8 +203,10 @@ export default function HeaderBottom() {
             onClick={handleDrawerOpen}
           >
             <MenuIcon />
-          </IconButton>
-
+          </IconButton> */}
+          <Typography variant='button' noWrap>
+            All Department
+          </Typography>
           <div className={classes.search}>
             <FormControl className={classes.formControl} variant='filled'>
               <Select
@@ -186,7 +216,14 @@ export default function HeaderBottom() {
                 className={classes.selectEmpty}
                 disableUnderline
                 displayEmpty
-                inputProps={{ 'aria-label': 'Without label' }}
+                MenuProps={{
+                  anchorOrigin: {
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  },
+                  getContentAnchorEl: null,
+                  classes: { paper: classes.menuPaper },
+                }}
               >
                 <MenuItem value=''>Select Category</MenuItem>
                 {data.map((i) => (
@@ -207,12 +244,13 @@ export default function HeaderBottom() {
 
       <Drawer
         className={classes.drawer}
-        variant='persistent'
+        // variant='persistent'
+        variant='permanent'
         anchor='left'
-        open={opens}
+        // open={opens}
         classes={{ paper: classes.drawerPaper }}
       >
-        <div className={classes.drawerHeader}>
+        {/* <div className={classes.drawerHeader}>
           <Typography variant='overlay' noWrap>
             All Department
           </Typography>
@@ -224,7 +262,7 @@ export default function HeaderBottom() {
             )}
           </IconButton>
         </div>
-        <Divider />
+        <Divider /> */}
         <List>
           {data.map(({ category_label }) => (
             <>

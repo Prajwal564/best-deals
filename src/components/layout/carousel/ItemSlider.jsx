@@ -18,7 +18,7 @@ export default class ItemSlider extends Component {
 
     return (
       <div>
-        <Slider {...settings}>
+        <Slider {...settings} arrows={false}>
           <div className='slider'>
             <img
               src='https://99percentinvisible.org/app/uploads/2019/02/abstract-background-colors.jpg'

@@ -11,12 +11,14 @@ function App() {
   return (
     <>
       <Header />
-      <Switch>
-        <Route exact path='/' component={Homepage} />
-        <Route exact path='/deals' component={Deals} />
-        <Route path='/category/:cid/deals/:did' component={DealItem} />
-        <Route path='/category/:cid' component={DealCategory} />
-      </Switch>
+      <div style={{ marginTop: '140px' }}>
+        <Switch>
+          <Route exact path='/' component={Homepage} />
+          <Route exact path='/deals' component={Deals} />
+          <Route path='/category/:cid/deals/:did' component={DealItem} />
+          <Route path='/category/:cid' component={DealCategory} />
+        </Switch>
+      </div>
     </>
   );
 }
