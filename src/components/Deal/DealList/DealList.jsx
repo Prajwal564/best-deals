@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     height: '320px',
+    width: 'auto',
   },
   cardContent: {
     height: '85px',

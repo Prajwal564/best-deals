@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
     // width: '18vw',
     height: '90vh',
     '&::-webkit-scrollbar': {
-      width: '0.6em',
+      width: '0.2em',
     },
     '&::-webkit-scrollbar-track': {
       boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
