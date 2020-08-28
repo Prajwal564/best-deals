@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // material ui core
+
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -15,12 +16,13 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";
 import Select from "@material-ui/core/Select";
-import Typography from "@material-ui/core/Typography";
+import { Typography } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Hidden from "@material-ui/core/Hidden";
 
 //Icons
 import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import CloseIcon from "@material-ui/icons/Close";
 import SearchIcon from "@material-ui/icons/Search";
 
 // deal json file
@@ -33,10 +35,14 @@ const useStyles = makeStyles((theme) => ({
   appbarStyle: {
     width: "100%",
     backgroundColor: "#034376",
-    height: "65px",
+    top: "60px",
+    // height: '65px',
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
   },
 
   search: {
@@ -91,22 +97,55 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     marginRight: theme.spacing(2),
   },
+  menuPaper: {
+    maxHeight: 500,
+    maxWidth: 50,
+    "&::-webkit-scrollbar": {
+      width: "0.4em",
+    },
+    "&::-webkit-scrollbar-track": {
+      boxShadow: "inset 0 0 6px rgba(0,0,0,0.00)",
+      webkitBoxShadow: "inset 0 0 6px rgba(0,0,0,0.00)",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "rgba(0,0,0,.1)",
+      outline: "1px solid slategrey",
+    },
+  },
   drawer: {
     flexShrink: 0,
   },
-  drawerPaper: {
-    position: "absolute",
-    top: "131px",
-    width: "18vw",
+
+  drawerPaperMobile: {
     height: "100vh",
+  },
+  drawerPaper: {
+    position: "fixed",
+    top: "125px",
+    bottom: "15px",
+    // width: '18vw',
+    height: "90vh",
+    "&::-webkit-scrollbar": {
+      width: "0.2em",
+    },
+    "&::-webkit-scrollbar-track": {
+      boxShadow: "inset 0 0 6px rgba(0,0,0,0.00)",
+      webkitBoxShadow: "inset 0 0 6px rgba(0,0,0,0.00)",
+    },
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "rgba(0,0,0,.1)",
+      outline: "1px solid slategrey",
+    },
   },
   drawerHeader: {
     position: "sticky",
     top: 0,
     zIndex: 1,
+
     backgroundColor: "white",
     display: "flex",
     alignItems: "center",
+
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
@@ -162,9 +201,32 @@ export default function HeaderBottom() {
 
   // ============
 
+  // drawer list component
+
+  const DrawerList = () => (
+    <List>
+      {data.map(({ category_label }) => (
+        <>
+          <Link
+            to={`/category/${category_label}`}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <ListItem button>
+              <ListItemText>{category_label}</ListItemText>
+            </ListItem>
+          </Link>
+          <Divider />
+        </>
+      ))}
+    </List>
+  );
+
+  //=================
+
   return (
     <div className={classes.root}>
-      <AppBar position="sticky" className={classes.appbarStyle}>
+      <CssBaseline />
+      <AppBar position="fixed" className={classes.appbarStyle}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -175,7 +237,11 @@ export default function HeaderBottom() {
           >
             <MenuIcon />
           </IconButton>
-
+          <Hidden only="sm">
+            <Typography variant="h6" noWrap>
+              All Department
+            </Typography>
+          </Hidden>
           <div className={classes.search}>
             <FormControl className={classes.formControl} variant="filled">
               <Select
@@ -185,7 +251,14 @@ export default function HeaderBottom() {
                 className={classes.selectEmpty}
                 disableUnderline
                 displayEmpty
-                inputProps={{ "aria-label": "Without label" }}
+                MenuProps={{
+                  anchorOrigin: {
+                    vertical: "bottom",
+                    horizontal: "left",
+                  },
+                  getContentAnchorEl: null,
+                  classes: { paper: classes.menuPaper },
+                }}
               >
                 <MenuItem value="">Select Category</MenuItem>
                 {data.map((i) => (
@@ -204,42 +277,41 @@ export default function HeaderBottom() {
 
       {/* ===== App bar drawer ====== */}
 
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={opens}
-        classes={{ paper: classes.drawerPaper }}
-      >
-        <div className={classes.drawerHeader}>
-          <Typography className={classes.title} variant="button" noWrap>
-            All Department
-          </Typography>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {data.map(({ category_label }) => (
-            <>
-              <Link
-                to={`/category/${category_label}`}
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                <ListItem button>
-                  <ListItemText>{category_label}</ListItemText>
-                </ListItem>
-              </Link>
-              <Divider />
-            </>
-          ))}
-        </List>
-      </Drawer>
+      <nav className={classes.drawer}>
+        <Hidden smUp implementation="css">
+          <Drawer
+            variant="temporary"
+            anchor={theme.direction === "rtl" ? "right" : "left"}
+            open={opens}
+            onClose={handleDrawerClose}
+            classes={{
+              paper: classes.drawerPaperMobile,
+            }}
+            ModalProps={{ keepMounted: true }}
+          >
+            <div className={classes.drawerHeader}>
+              <Typography variant="overlay" noWrap>
+                All Department
+              </Typography>
+              <IconButton onClick={handleDrawerClose}>
+                <CloseIcon />
+              </IconButton>
+            </div>
+            <Divider />
+            <DrawerList />
+          </Drawer>
+        </Hidden>
+        <Hidden smDown implementation="css">
+          <Drawer
+            className={classes.drawer}
+            variant="permanent"
+            anchor="left"
+            classes={{ paper: classes.drawerPaper }}
+          >
+            <DrawerList />
+          </Drawer>
+        </Hidden>
+      </nav>
     </div>
   );
 }
