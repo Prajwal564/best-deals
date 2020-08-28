@@ -4,6 +4,7 @@ import './Homepage.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Hidden from '@material-ui/core/Hidden';
 
 import ItemSlider from '../../components/layout/carousel/ItemSlider';
 import HotDeal from '../../components/layout/hot-deal/HotDeal';
@@ -67,31 +68,33 @@ const Homepage = () => {
           <FeaturedDeal />
         </Grid>
       </Grid>
-      <Grid
-        container
-        xs={12}
-        md={3}
-        spacing={3}
-        direction='column'
-        align='center'
-      >
-        <Grid item>
-          <Paper
-            className={classes.paper}
-            style={{ height: '600px', width: '300px' }}
-          >
-            Advertisement
-          </Paper>
+      <Hidden only='sm'>
+        <Grid
+          container
+          sm={12}
+          md={3}
+          spacing={3}
+          direction='column'
+          align='center'
+        >
+          <Grid item>
+            <Paper
+              className={classes.paper}
+              style={{ height: '600px', width: '300px' }}
+            >
+              Advertisement
+            </Paper>
+          </Grid>
+          <Grid item>
+            <Paper
+              className={classes.paper}
+              style={{ width: '300px', height: '250px' }}
+            >
+              Advertisement
+            </Paper>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Paper
-            className={classes.paper}
-            style={{ width: '300px', height: '250px' }}
-          >
-            Advertisement
-          </Paper>
-        </Grid>
-      </Grid>
+      </Hidden>
     </div>
   );
 };
