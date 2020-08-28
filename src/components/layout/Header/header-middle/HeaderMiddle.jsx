@@ -9,6 +9,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
+import Hidden from '@material-ui/core/Hidden';
 
 //hover pop up
 import Popover from 'material-ui-popup-state/HoverPopover';
@@ -63,43 +64,44 @@ const HeaderMiddle = () => {
               <IncomeHonchoLogo />
             </Link>
           </div>
+          <Hidden smDown>
+            <Button component={Link} to='/deals' disableRipple>
+              <b>Deals</b>
+            </Button>
+            <Button disableRipple {...bindHover(popupState)}>
+              <b>Stores</b>
+            </Button>
 
-          <Button component={Link} to='/deals' disableRipple>
-            <b>Deals</b>
-          </Button>
-          <Button disableRipple {...bindHover(popupState)}>
-            <b>Stores</b>
-          </Button>
+            {/* hover popover for stores */}
 
-          {/* hover popover for stores */}
-
-          <Popover
-            {...bindPopover(popupState)}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'center',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'center',
-            }}
-            disableRestoreFocus
-          >
-            <div className={classes.popover}>
-              <Typography className={classes.popoverTitle}>
-                Find coupons by Stores
-              </Typography>
-            </div>
-          </Popover>
-          <Button disableRipple>
-            <b>Forums</b>
-          </Button>
-          <Button disableRipple>
-            <b>Blogs</b>
-          </Button>
-          <Button disableRipple>
-            <b>About Us</b>
-          </Button>
+            <Popover
+              {...bindPopover(popupState)}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'center',
+              }}
+              disableRestoreFocus
+            >
+              <div className={classes.popover}>
+                <Typography className={classes.popoverTitle}>
+                  Find coupons by Stores
+                </Typography>
+              </div>
+            </Popover>
+            <Button disableRipple>
+              <b>Forums</b>
+            </Button>
+            <Button disableRipple>
+              <b>Blogs</b>
+            </Button>
+            <Button disableRipple>
+              <b>About Us</b>
+            </Button>
+          </Hidden>
         </Toolbar>
       </AppBar>
     </div>

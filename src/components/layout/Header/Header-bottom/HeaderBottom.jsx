@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('lg')]: {
       display: 'none',
     },
   },
@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     borderRightStyle: 'solid',
     borderRightColor: '#E0DCDC',
     borderRightWidth: '3px',
-    width: '25%',
+    width: '30%',
     marginTop: '1%',
     marginBottom: '1%',
     height: '45px',
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
 
   input: {
     backgroundColor: '#fff',
-    width: '25vw',
+    width: '50%',
     height: '45px',
     paddingLeft: '10px',
   },
@@ -122,7 +122,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'fixed',
     top: '125px',
     bottom: '15px',
-    // width: '18vw',
+    width: 'auto',
     height: '90vh',
     '&::-webkit-scrollbar': {
       width: '0.2em',
@@ -158,7 +158,6 @@ const useStyles = makeStyles((theme) => ({
 export default function HeaderBottom() {
   const classes = useStyles();
   const theme = useTheme();
-
   const [opens, setOpens] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -235,7 +234,7 @@ export default function HeaderBottom() {
           >
             <MenuIcon />
           </IconButton>
-          <Hidden only='sm'>
+          <Hidden mdDown>
             <Typography variant='h6' noWrap>
               All Department
             </Typography>
@@ -276,7 +275,7 @@ export default function HeaderBottom() {
       {/* ===== App bar drawer ====== */}
 
       <nav className={classes.drawer}>
-        <Hidden smUp implementation='css'>
+        <Hidden mdUp implementation='css'>
           <Drawer
             variant='temporary'
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
@@ -299,7 +298,7 @@ export default function HeaderBottom() {
             <DrawerList />
           </Drawer>
         </Hidden>
-        <Hidden smDown implementation='css'>
+        <Hidden mdDown implementation='css'>
           <Drawer
             className={classes.drawer}
             variant='permanent'

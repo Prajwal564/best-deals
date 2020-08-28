@@ -6,6 +6,7 @@ import DealItemDetail from './DealItemDetail';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Hidden from '@material-ui/core/Hidden';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,18 +35,20 @@ const DealItem = ({ match }) => {
 
   return (
     <div className={classes.root}>
-      <Grid container xs={12} md={2} justify='space-around'>
-        <Grid item md={10}></Grid>
-      </Grid>
-      <Grid container md={7} xs={12} spacing={3}>
-        <Grid item xs={12} align='center'>
-          <Paper
-            className={classes.paper}
-            style={{ height: '89px', width: '729px' }}
-          >
-            Advertisement
-          </Paper>
-        </Grid>
+      <Hidden mdDown>
+        <Grid container lg={2}></Grid>
+      </Hidden>
+      <Grid container md={9} xs={12} lg={7} spacing={3}>
+        <Hidden only='xs'>
+          <Grid item xs={12} align='center'>
+            <Paper
+              className={classes.paper}
+              style={{ height: '89px', width: '729px' }}
+            >
+              Advertisement
+            </Paper>
+          </Grid>
+        </Hidden>
         <Grid item xs={12}>
           {data
             .filter(({ category_label }) => category_label === match.params.cid)
@@ -56,31 +59,34 @@ const DealItem = ({ match }) => {
             )}
         </Grid>
       </Grid>
-      <Grid
-        container
-        xs={12}
-        md={3}
-        spacing={3}
-        direction='column'
-        align='center'
-      >
-        <Grid item>
-          <Paper
-            className={classes.paper}
-            style={{ height: '600px', width: '300px' }}
-          >
-            Advertisement
-          </Paper>
+      <Hidden smDown>
+        <Grid
+          container
+          xs={12}
+          md={3}
+          lg={3}
+          spacing={3}
+          direction='column'
+          align='center'
+        >
+          <Grid item>
+            <Paper
+              className={classes.paper}
+              style={{ height: '600px', width: '300px' }}
+            >
+              Advertisement
+            </Paper>
+          </Grid>
+          <Grid item>
+            <Paper
+              className={classes.paper}
+              style={{ width: '300px', height: '250px' }}
+            >
+              Advertisement
+            </Paper>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Paper
-            className={classes.paper}
-            style={{ width: '300px', height: '250px' }}
-          >
-            Advertisement
-          </Paper>
-        </Grid>
-      </Grid>
+      </Hidden>
     </div>
   );
 };

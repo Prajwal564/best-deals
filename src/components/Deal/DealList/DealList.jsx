@@ -23,14 +23,13 @@ const useStyles = makeStyles((theme) => ({
     width: 'auto',
   },
   cardContent: {
-    height: '85px',
+    height: '125px',
     position: 'relative',
   },
   priceText: {
     position: 'absolute',
     bottom: '0',
     display: 'flex',
-    justifyContent: 'space-between',
   },
   crossedLine: {
     textDecoration: 'line-through',
@@ -56,11 +55,11 @@ const DealList = ({ products, category_label }) => {
           </Typography>
         </Link>
       </Grid>
-      <Grid container className={classes.items} spacing={1}>
+      <Grid container className={classes.items} spacing={2}>
         {products
           .filter((item, idx) => idx < 4)
           .map((i) => (
-            <Grid item key={i.id} xs={12} sm={6} md={3}>
+            <Grid item key={i.id} xs={6} sm={4} md={3} xl={2}>
               <Card key={i.id} className={classes.card}>
                 <CardActionArea
                   component={Link}

@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
   },
   paper: {
+    // padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
@@ -32,47 +33,56 @@ const Homepage = () => {
 
   return (
     <div className={classes.root}>
-      <Grid container xs={12} md={2} justify='space-around'>
-        <Grid item md={10}></Grid>
-      </Grid>
-      <Grid container md={7} xs={12} align='center' spacing={3}>
-        <Grid item xs={12}>
-          <Paper
-            className={classes.paper}
-            style={{ height: '89px', width: '729px' }}
-          >
-            Advertisement
-          </Paper>
-        </Grid>
+      <Hidden mdDown>
+        <Grid container lg={2}></Grid>
+      </Hidden>
+      <Grid container lg={7} md={9} xs={12} align='center' spacing={1}>
+        <Hidden only='xs'>
+          <Grid item xs={12}>
+            <Paper
+              className={classes.paper}
+              style={{ height: '89px', width: '729px' }}
+            >
+              Advertisement
+            </Paper>
+          </Grid>
+        </Hidden>
         <Grid item xs={12}>
           <ItemSlider />
         </Grid>
 
-        <Grid item xs={12} style={{ marginTop: '2em' }}>
+        <Grid
+          container
+          spacing={2}
+          xs={12}
+          style={{ marginTop: '2em', marginLeft: '2px', marginRight: '2px' }}
+        >
           <ShowCardAll />
         </Grid>
 
         <Grid item xs={12}>
           <HotDeal />
         </Grid>
-        <Grid item xs={12}>
-          <Paper
-            className={classes.paper}
-            style={{ height: '88px', width: '733px' }}
-          >
-            Advertisement
-          </Paper>
-        </Grid>
-
+        <Hidden only='xs'>
+          <Grid item xs={12}>
+            <Paper
+              className={classes.paper}
+              style={{ height: '89px', width: '729px' }}
+            >
+              Advertisement
+            </Paper>
+          </Grid>
+        </Hidden>
         <Grid item xs={12}>
           <FeaturedDeal />
         </Grid>
       </Grid>
-      <Hidden only='sm'>
+      <Hidden smDown>
         <Grid
           container
-          sm={12}
+          xs={12}
           md={3}
+          lg={3}
           spacing={3}
           direction='column'
           align='center'
