@@ -137,16 +137,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   drawerHeader: {
-    position: 'sticky',
-    top: 0,
-    zIndex: 1,
-    backgroundColor: 'white',
     display: 'flex',
     alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    padding: theme.spacing(1),
+
+    justifyContent: 'space-between',
   },
   dropdownStyle: {
     border: '1px solid black',
@@ -287,8 +282,8 @@ export default function HeaderBottom() {
             ModalProps={{ keepMounted: true }}
           >
             <div className={classes.drawerHeader}>
-              <Typography variant='overlay' noWrap>
-                All Department
+              <Typography variant='button' noWrap>
+                <b>All Department </b>
               </Typography>
               <IconButton onClick={handleDrawerClose}>
                 <CloseIcon />
