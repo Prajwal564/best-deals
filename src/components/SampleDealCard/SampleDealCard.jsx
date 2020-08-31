@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Rating from "@material-ui/lab/Rating";
 import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   rootCard: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #8C8A8A",
   },
   media: {
-    height: "130px",
+    height: "22vh",
     marginTop: "2%",
     marginBottom: "2%",
     width: "100%",
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SampleDealCard = ({ products }) => {
+const SampleDealCard = ({ products, category_label }) => {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -44,7 +45,10 @@ const SampleDealCard = ({ products }) => {
         .map((deal) => (
           <Grid item xs={6} sm={3}>
             <Card className={classes.rootCard}>
-              <CardActionArea>
+              <CardActionArea
+                component={Link}
+                to={`/category/${category_label}/deals/${deal.id}`}
+              >
                 <CardMedia className={classes.media} image={deal.imageUrl} />
                 <CardContent style={{ padding: "6px" }}>
                   <Typography>
@@ -54,10 +58,13 @@ const SampleDealCard = ({ products }) => {
                       readOnly
                     />
                   </Typography>
-                  <Typography gutterBottom style={{ fontSize: "13px" }}>
-                    {deal.title.slice(0, 20)}
-                    {"..."}
-                  </Typography>
+                  <div style={{ height: "4vh" }}>
+                    <Typography gutterBottom style={{ fontSize: "13px" }}>
+                      {deal.title.slice(0, 20)}
+                      {"..."}
+                    </Typography>
+                  </div>
+
                   <Typography variant="subtitle2" component="h2">
                     <span className={classes.offerPrice}>
                       ${deal.offerPrice}
@@ -75,6 +82,8 @@ const SampleDealCard = ({ products }) => {
                   variant="outlined"
                   size="small"
                   color="primary"
+                  component={Link}
+                  to={`/category/${category_label}/deals/${deal.id}`}
                 >
                   View Details
                 </Button>

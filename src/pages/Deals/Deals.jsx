@@ -1,20 +1,20 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import AllCategoryDeals from '../../components/Deal/DealList/AllCategoryDeals';
+import React from "react";
+import { Route } from "react-router-dom";
+import AllCategoryDeals from "../../components/Deal/DealList/AllCategoryDeals";
 
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Hidden from '@material-ui/core/Hidden';
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import Hidden from "@material-ui/core/Hidden";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    margin: '1rem 1rem',
-    justifyContent: 'space-between',
+    display: "flex",
+    margin: "1rem 1rem",
+    justifyContent: "space-between",
   },
   paper: {
-    textAlign: 'center',
+    textAlign: "center",
     color: theme.palette.text.secondary,
   },
 }));
@@ -27,21 +27,23 @@ const Deals = ({ match }) => {
       <Hidden mdDown>
         <Grid container lg={2}></Grid>
       </Hidden>
-      <Grid container lg={7} md={9} xs={12} align='center' spacing={3}>
-        <Hidden only='xs'>
+      <Grid container lg={7} md={9} xs={12} align="center" spacing={3}>
+        <Hidden only="xs">
           <Grid item xs={12}>
             <Paper
               className={classes.paper}
-              style={{ height: '89px', width: '729px' }}
+              style={{ height: "89px", width: "729px" }}
             >
               Advertisement
             </Paper>
           </Grid>
         </Hidden>
+
         <Grid item xs={12}>
           <Route exact path={`${match.path}`} component={AllCategoryDeals} />
         </Grid>
       </Grid>
+
       <Hidden smDown>
         <Grid
           container
@@ -49,13 +51,13 @@ const Deals = ({ match }) => {
           md={3}
           lg={3}
           spacing={3}
-          direction='column'
-          align='center'
+          direction="column"
+          align="center"
         >
           <Grid item>
             <Paper
               className={classes.paper}
-              style={{ height: '600px', width: '300px' }}
+              style={{ height: "600px", width: "300px" }}
             >
               Advertisement
             </Paper>
@@ -63,7 +65,7 @@ const Deals = ({ match }) => {
           <Grid item>
             <Paper
               className={classes.paper}
-              style={{ width: '300px', height: '250px' }}
+              style={{ width: "300px", height: "250px" }}
             >
               Advertisement
             </Paper>
