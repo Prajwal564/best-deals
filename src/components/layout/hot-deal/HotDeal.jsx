@@ -8,7 +8,7 @@ import WhatshotIcon from "@material-ui/icons/Whatshot";
 import data from "../../../data/deal.json";
 
 //sample card
-import SampleDealCard from "../../SampleDealCard/SampleDealCard";
+import HotDealCard from "./HotDealCard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,7 +56,7 @@ const HotDeal = () => {
           </div>
         </Grid>
         {deal.slice(0, 1).map((product) => (
-          <SampleDealCard
+          <HotDealCard
             products={product.products}
             category_label={product.category_label}
           />
