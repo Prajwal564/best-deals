@@ -4,8 +4,12 @@ import AllCategoryDeals from "../../components/Deal/DealList/AllCategoryDeals";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import Hidden from "@material-ui/core/Hidden";
+
+//advertisement
+import TopAd from "../../components/layout/advertisement/TopAd";
+import TopRightAd from "../../components/layout/advertisement/TopRightAd";
+import BottomRightAd from "../../components/layout/advertisement/BottomRightAd";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,12 +34,7 @@ const Deals = ({ match }) => {
       <Grid container lg={7} md={9} xs={12} align="center" spacing={3}>
         <Hidden only="xs">
           <Grid item xs={12}>
-            <Paper
-              className={classes.paper}
-              style={{ height: "89px", width: "729px" }}
-            >
-              Advertisement
-            </Paper>
+            <TopAd />
           </Grid>
         </Hidden>
 
@@ -55,20 +54,10 @@ const Deals = ({ match }) => {
           align="center"
         >
           <Grid item>
-            <Paper
-              className={classes.paper}
-              style={{ height: "600px", width: "300px" }}
-            >
-              Advertisement
-            </Paper>
+            <TopRightAd />
           </Grid>
           <Grid item>
-            <Paper
-              className={classes.paper}
-              style={{ width: "300px", height: "250px" }}
-            >
-              Advertisement
-            </Paper>
+            <BottomRightAd />
           </Grid>
         </Grid>
       </Hidden>
