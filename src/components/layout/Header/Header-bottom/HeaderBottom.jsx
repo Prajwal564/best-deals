@@ -1,40 +1,40 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // material ui core
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import InputBase from "@material-ui/core/InputBase";
-import FormControl from "@material-ui/core/FormControl";
-import MenuItem from "@material-ui/core/MenuItem";
-import Drawer from "@material-ui/core/Drawer";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import List from "@material-ui/core/List";
-import Select from "@material-ui/core/Select";
-import { Typography } from "@material-ui/core";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Hidden from "@material-ui/core/Hidden";
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import InputBase from '@material-ui/core/InputBase';
+import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+import Drawer from '@material-ui/core/Drawer';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import List from '@material-ui/core/List';
+import Select from '@material-ui/core/Select';
+import { Typography } from '@material-ui/core';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Hidden from '@material-ui/core/Hidden';
 
 //Icons
-import MenuIcon from "@material-ui/icons/Menu";
-import CloseIcon from "@material-ui/icons/Close";
-import SearchIcon from "@material-ui/icons/Search";
+import MenuIcon from '@material-ui/icons/Menu';
+import CloseIcon from '@material-ui/icons/Close';
+import SearchIcon from '@material-ui/icons/Search';
 
 // deal json file
-import deal from "../../../../data/deal.json";
+import deal from '../../../../data/deal.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   appbarStyle: {
-    width: "100%",
-    backgroundColor: "#034376",
-    top: "60px",
+    width: '100%',
+    backgroundColor: '#034376',
+    top: '60px',
     // height: '65px',
   },
   menuButton: {
@@ -143,11 +143,6 @@ const useStyles = makeStyles((theme) => ({
 
     justifyContent: 'space-between',
   },
-  dropdownStyle: {
-    border: '1px solid black',
-    borderRadius: '5%',
-    backgroundColor: 'lightgrey',
-  },
 }));
 
 export default function HeaderBottom() {
@@ -180,7 +175,7 @@ export default function HeaderBottom() {
   // select bar state
 
   const [select, setSelect] = useState({
-    items: "",
+    items: '',
   });
 
   const handleChange = (event) => {

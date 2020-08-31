@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     width: 'auto',
   },
   cardContent: {
-    height: '125px',
+    height: '90px',
     position: 'relative',
   },
   priceText: {

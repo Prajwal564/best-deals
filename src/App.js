@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <Header />
-      <div style={{ marginTop: '140px' }}>
+      <div style={{ marginTop: '80px' }}>
         <Switch>
           <Route exact path='/' component={Homepage} />
           <Route exact path='/deals' component={Deals} />
