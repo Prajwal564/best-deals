@@ -45,7 +45,10 @@ const FeaturedDeal = () => {
           </div>
         </Grid>
         {offer.slice(2, 3).map((item) => (
-          <SampleFeaturedCard featuredProducts={item.products} />
+          <SampleFeaturedCard
+            featuredProducts={item.products}
+            category_label={item.category_label}
+          />
         ))}
       </Grid>
     </div>

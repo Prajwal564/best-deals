@@ -55,12 +55,12 @@ const HotDeal = () => {
             <span>Hot Deal</span>
           </div>
         </Grid>
-        {deal.slice(0, 1).map(
-          (product) => (
-            <SampleDealCard products={product.products} />
-          )
-          // console.log(product)
-        )}{" "}
+        {deal.slice(0, 1).map((product) => (
+          <SampleDealCard
+            products={product.products}
+            category_label={product.category_label}
+          />
+        ))}{" "}
       </Grid>
     </div>
   );

@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Rating from "@material-ui/lab/Rating";
 import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   rootCard: {
@@ -35,9 +36,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SampleFeaturedCard = ({ featuredProducts }) => {
+const SampleFeaturedCard = ({ featuredProducts, category_label }) => {
   const classes = useStyles();
-  // const dealItem = products.filter((item) => item.offerPercent > 60);
   return (
     <React.Fragment>
       {console.log(featuredProducts)}
@@ -46,9 +46,12 @@ const SampleFeaturedCard = ({ featuredProducts }) => {
         .map((deal) => (
           <Grid item xs={6} sm={3}>
             <Card className={classes.rootCard}>
-              <CardActionArea>
+              <CardActionArea
+                component={Link}
+                to={`/category/${category_label}/deals/${deal.id}`}
+              >
                 <CardMedia className={classes.media} image={deal.imageUrl} />
-                <CardContent style={{ padding: "6px" }}>
+                <CardContent style={{ padding: "2%" }}>
                   <Typography>
                     <Rating
                       name="half-rating-read"
@@ -56,10 +59,13 @@ const SampleFeaturedCard = ({ featuredProducts }) => {
                       readOnly
                     />
                   </Typography>
-                  <Typography gutterBottom style={{ fontSize: "13px" }}>
-                    {deal.title.slice(0, 20)}
-                    {"..."}
-                  </Typography>
+                  <div style={{ height: "5.5vh" }}>
+                    <Typography gutterBottom style={{ fontSize: "13px" }}>
+                      {deal.title.slice(0, 20)}
+                      {"..."}
+                    </Typography>
+                  </div>
+
                   <Typography variant="subtitle2" component="h2">
                     <span className={classes.offerPrice}>
                       ${deal.offerPrice}
@@ -77,6 +83,8 @@ const SampleFeaturedCard = ({ featuredProducts }) => {
                   variant="outlined"
                   size="small"
                   color="primary"
+                  component={Link}
+                  to={`/category/${category_label}/deals/${deal.id}`}
                 >
                   View Details
                 </Button>
