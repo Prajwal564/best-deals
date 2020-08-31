@@ -6,10 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Hidden from '@material-ui/core/Hidden';
 
-import ItemSlider from '../../components/layout/carousel/ItemSlider';
 import HotDeal from '../../components/layout/hot-deal/HotDeal';
 import FeaturedDeal from '../../components/layout/featured-deal/FeaturedDeal';
-import ShowCardAll from '../../components/layout/show-card-home/ShowCardAll';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,18 +45,6 @@ const Homepage = () => {
             </Paper>
           </Grid>
         </Hidden>
-        <Grid item xs={12}>
-          <ItemSlider />
-        </Grid>
-
-        <Grid
-          container
-          spacing={2}
-          xs={12}
-          style={{ marginTop: '2em', marginLeft: '2px', marginRight: '2px' }}
-        >
-          <ShowCardAll />
-        </Grid>
 
         <Grid item xs={12}>
           <HotDeal />
