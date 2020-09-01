@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     height: '320px',
     width: 'auto',
+    border: '0.5px solid gray',
   },
   cardContent: {
     height: '90px',
@@ -67,7 +68,6 @@ const CategoryList = ({ category_label, products }) => {
                   height='140px'
                   image={i.imageUrl}
                   title={i.title}
-                  style={{ paddingTop: '5px' }}
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography

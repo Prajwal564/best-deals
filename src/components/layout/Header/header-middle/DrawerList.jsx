@@ -22,7 +22,7 @@ const DrawerList = () => {
 
   return (
     <List style={{ borderTop: '1px solid lightgray' }}>
-      {data.map(({ category_label }) => (
+      {data.map(({ category_label, category_id }) => (
         <>
           <Link
             to={`/category/${category_label}`}
