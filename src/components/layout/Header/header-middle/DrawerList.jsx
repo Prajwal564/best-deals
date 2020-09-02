@@ -1,16 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+// import { makeStyles } from "@material-ui/core/styles";
 
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
+import List from "@material-ui/core/List";
+
+import Divider from "@material-ui/core/Divider";
+import Button from "@material-ui/core/Button";
+import MenuItem from "@material-ui/core/MenuItem";
+import DrawerListItem from "./DrawerListItem";
+// import { makeStyles } from "@material-ui/core/styles";
 
 // deal json file
-import deal from '../../../../data/deal.json';
+import deal from "../../../../data/deal.json";
+
+// const useStyles = makeStyles((theme) => ({
+//   active: {
+//     backgroundColor: "red",
+//   },
+// }));
 
 const DrawerList = () => {
   const [data, setData] = useState([]);
+
+  const [currentTab, setCurrentTab] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,21 +33,25 @@ const DrawerList = () => {
   }, []);
 
   return (
-    <List style={{ borderTop: '1px solid lightgray' }}>
-      {data.map(({ category_label }) => (
-        <>
-          <Link
-            to={`/category/${category_label}`}
-            style={{ textDecoration: 'none', color: 'black' }}
-          >
-            <ListItem button>
-              <ListItemText>{category_label}</ListItemText>
-            </ListItem>
-          </Link>
-          <Divider />
-        </>
-      ))}
-    </List>
+    <>
+      <List style={{ borderTop: "1px solid lightgray" }}>
+        {data.map(({ category_label }) => (
+          <>
+            <Link
+              to={`/category/${category_label}`}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <DrawerListItem
+                category_label={category_label}
+                currentTab={currentTab}
+                setCurrentTab={setCurrentTab}
+              />
+            </Link>
+            <Divider />
+          </>
+        ))}
+      </List>
+    </>
   );
 };
 

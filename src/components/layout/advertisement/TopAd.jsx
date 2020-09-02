@@ -7,7 +7,7 @@ const TopAd = () => {
     <div>
       <img
         src={Top}
-        style={{ width: "729px", height: "89px" }}
+        style={{ width: "728px", height: "90px" }}
         alt="Advertisement"
       ></img>
     </div>
