@@ -83,6 +83,7 @@ const useStyles = makeStyles((theme) => ({
   searchIcon: {
     color: '#034376',
     marginLeft: 'auto',
+    marginRight: '10px',
   },
 }));
 
@@ -145,7 +146,9 @@ const HeaderMiddle = () => {
               <SearchIcon />
             </IconButton>
           </div>
-          <Button disableRipple>Sign In</Button>
+          <Hidden smDown>
+            <Button disableRipple>Sign In</Button>
+          </Hidden>
         </Toolbar>
       </AppBar>
 
