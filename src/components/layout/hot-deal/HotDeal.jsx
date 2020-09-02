@@ -1,36 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import WhatshotIcon from "@material-ui/icons/Whatshot";
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
 
 //json data
-import data from "../../../data/deal.json";
+import data from '../../../data/deal.json';
 
 //sample card
-import HotDealCard from "./HotDealCard";
+import HotDealCard from './HotDealCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: "#ffffff",
-    marginTop: "2em",
-    padding: "10px",
-    boxShadow: "0px 3px 6px rgba(0, 0, 0, 0.25)",
+    backgroundColor: '#ffffff',
+    marginTop: '2em',
+    padding: '10px',
+    boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.25)',
   },
   paper: {
-    textAlign: "center",
-    justify: "center",
+    textAlign: 'center',
+    justify: 'center',
     color: theme.palette.text.secondary,
-    backgroundColor: "#ffffff",
-    height: "300px",
-    border: "1px solid gray",
+    backgroundColor: '#ffffff',
+    height: '300px',
+    border: '1px solid gray',
   },
   title: {
-    display: "flex",
-    borderBottom: "1px solid gray",
-    alignItems: "center",
-    paddingBottom: "10px",
+    display: 'flex',
+    borderBottom: '1px solid gray',
+    alignItems: 'center',
+    paddingBottom: '10px',
   },
 }));
 
@@ -60,7 +60,7 @@ const HotDeal = () => {
             products={product.products}
             category_label={product.category_label}
           />
-        ))}{" "}
+        ))}
       </Grid>
     </div>
   );

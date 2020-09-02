@@ -21,17 +21,14 @@ import CloseIcon from '@material-ui/icons/Close';
 import SearchIcon from '@material-ui/icons/Search';
 
 //hover pop up
-import Popover from 'material-ui-popup-state/HoverPopover';
-import {
-  usePopupState,
-  bindHover,
-  bindPopover,
-} from 'material-ui-popup-state/hooks';
+import Popover from '@material-ui/core/Popover';
+import SearchBar from 'material-ui-search-bar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     padding: '1px 2px',
+    width: '100%',
   },
   appbarStyle: {
     backgroundColor: '#ffffff',
@@ -41,18 +38,6 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     marginRight: '3em',
-  },
-  popover: {
-    background: '#ffffff',
-    width: '700px',
-    height: '250px',
-    margin: 10,
-  },
-  popoverTitle: {
-    margin: 10,
-    borderBottom: '1px solid gray',
-    padding: '10px 0',
-    fontWeight: 'bold',
   },
   menuButton: {
     color: '#034376',
@@ -106,10 +91,21 @@ const HeaderMiddle = () => {
   const theme = useTheme();
   const [opens, setOpens] = useState(false);
 
-  const popupState = usePopupState({
-    variant: 'popover',
-    popupId: 'demoPopover',
-  });
+  // search bar
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : null;
+
+  //=============
 
   const handleDrawerOpen = () => {
     setOpens(!opens);
@@ -141,14 +137,15 @@ const HeaderMiddle = () => {
             <Button component={Link} to='/deals' disableRipple>
               Deals
             </Button>
-            <Button disableRipple {...bindHover(popupState)}>
-              Stores
-            </Button>
+            <Button disableRipple>Stores</Button>
             <Button disableRipple>Blogs</Button>
           </Hidden>
           <div className={classes.searchIcon}>
-            <SearchIcon />
+            <IconButton onClick={handleClick} aria-describedby={id}>
+              <SearchIcon />
+            </IconButton>
           </div>
+          <Button disableRipple>Sign In</Button>
         </Toolbar>
       </AppBar>
 
@@ -195,24 +192,29 @@ const HeaderMiddle = () => {
         </Hidden>
       </nav>
 
-      {/* hover popover for stores */}
+      {/* popover for search */}
       <Popover
-        {...bindPopover(popupState)}
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center',
+          horizontal: 'right',
         }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'center',
+          horizontal: 'right',
         }}
-        disableRestoreFocus
       >
-        <div className={classes.popover}>
-          <Typography className={classes.popoverTitle}>
-            Find coupons by Stores
-          </Typography>
-        </div>
+        <SearchBar
+          onChange={() => console.log('onChange')}
+          onRequestSearch={() => console.log('onRequestSearch')}
+          style={{
+            margin: '0 auto',
+            maxWidth: 800,
+          }}
+        />
       </Popover>
     </div>
   );

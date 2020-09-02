@@ -1,23 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import { makeStyles } from "@material-ui/core/styles";
-
 import List from "@material-ui/core/List";
-
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
 import DrawerListItem from "./DrawerListItem";
-// import { makeStyles } from "@material-ui/core/styles";
 
-// deal json file
+//json data
 import deal from "../../../../data/deal.json";
 
-// const useStyles = makeStyles((theme) => ({
-//   active: {
-//     backgroundColor: "red",
-//   },
-// }));
+
 
 const DrawerList = () => {
   const [data, setData] = useState([]);
