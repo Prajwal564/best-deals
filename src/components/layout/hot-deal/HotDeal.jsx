@@ -1,17 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-
 import WhatshotIcon from '@material-ui/icons/Whatshot';
+import { selectCollections } from '../../../redux/deals/deal.selectors';
+
+//sample card
+import HotDealCard from './HotDealCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: '#ffffff',
-    marginTop: '2em',
+    marginTop: '10px',
     padding: '10px',
+    boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.25)',
   },
   paper: {
     textAlign: 'center',
@@ -29,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HotDeal = () => {
+const HotDeal = ({ data }) => {
   const classes = useStyles();
 
   return (
@@ -41,22 +46,19 @@ const HotDeal = () => {
             <span>Hot Deal</span>
           </div>
         </Grid>
-
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>1</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>2</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>3</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>4</Paper>
-        </Grid>
+        {data.slice(0, 1).map((product) => (
+          <HotDealCard
+            products={product.products}
+            category_label={product.category_label}
+          />
+        ))}
       </Grid>
     </div>
   );
 };
 
-export default HotDeal;
+const mapStateToProps = createStructuredSelector({
+  data: selectCollections,
+});
+
+export default connect(mapStateToProps)(HotDeal);

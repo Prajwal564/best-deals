@@ -20,16 +20,17 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     height: '320px',
+    width: 'auto',
+    border: '0.5px solid gray',
   },
   cardContent: {
-    height: '85px',
+    height: '90px',
     position: 'relative',
   },
   priceText: {
     position: 'absolute',
     bottom: '0',
     display: 'flex',
-    justifyContent: 'space-between',
   },
   crossedLine: {
     textDecoration: 'line-through',
@@ -50,16 +51,16 @@ const DealList = ({ products, category_label }) => {
           to={`/category/${category_label}`}
           style={{ textDecoration: 'none' }}
         >
-          <Typography variant='h6' color='textSecondary' gutterBottom>
+          <Typography variant='h6' color='inherit' gutterBottom>
             {category_label}
           </Typography>
         </Link>
       </Grid>
-      <Grid container className={classes.items} spacing={1}>
+      <Grid container className={classes.items} spacing={2}>
         {products
           .filter((item, idx) => idx < 4)
           .map((i) => (
-            <Grid item key={i.id} xs={12} sm={6} md={3}>
+            <Grid item key={i.id} xs={6} sm={4} md={3} xl={2}>
               <Card key={i.id} className={classes.card}>
                 <CardActionArea
                   component={Link}
@@ -71,7 +72,6 @@ const DealList = ({ products, category_label }) => {
                     height='140px'
                     image={i.imageUrl}
                     title={i.title}
-                    style={{ paddingTop: '5px' }}
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography
@@ -85,18 +85,14 @@ const DealList = ({ products, category_label }) => {
                     <div className={classes.priceText}>
                       <Typography
                         variant='body2'
-                        color='textSecondary'
+                        color='inherit'
                         component='p'
                         className={classes.crossedLine}
                       >
                         ${i.normalPrice}
                       </Typography>
                       &nbsp;&nbsp;
-                      <Typography
-                        variant='body2'
-                        color='textSecondary'
-                        component='p'
-                      >
+                      <Typography variant='body2' color='inherit' component='p'>
                         ${i.offerPrice}
                       </Typography>
                     </div>
@@ -109,7 +105,7 @@ const DealList = ({ products, category_label }) => {
                     disableElevation
                     component={Link}
                     to={`/category/${category_label}/deals/${i.id}`}
-                    color='textSecondary'
+                    color='inherit'
                   >
                     View Details
                   </Button>
@@ -124,7 +120,7 @@ const DealList = ({ products, category_label }) => {
           style={{ textDecoration: 'none' }}
         >
           <Button
-            color='secondary'
+            color='inherit'
             variant='text'
             disableRipple
             disableFocusRipple

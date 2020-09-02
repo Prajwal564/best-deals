@@ -14,23 +14,23 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    padding: theme.spacing(2),
   },
   gridList: {
     flexWrap: 'nowrap',
   },
   card: {
     height: '320px',
+    width: 'auto',
+    border: '0.5px solid gray',
   },
   cardContent: {
-    height: '85px',
+    height: '90px',
     position: 'relative',
   },
   priceText: {
     position: 'absolute',
     bottom: '0',
     display: 'flex',
-    justifyContent: 'space-between',
   },
   crossedLine: {
     textDecoration: 'line-through',
@@ -56,7 +56,7 @@ const CategoryList = ({ category_label, products }) => {
         alignItems='flex-start'
       >
         {products.map((i) => (
-          <Grid item xs={12} sm={6} md={3} key={i.id}>
+          <Grid item xs={6} sm={4} md={3} xl={2} key={i.id}>
             <Card key={i.id} className={classes.card}>
               <CardActionArea
                 component={Link}
@@ -68,11 +68,15 @@ const CategoryList = ({ category_label, products }) => {
                   height='140px'
                   image={i.imageUrl}
                   title={i.title}
-                  style={{ paddingTop: '10px' }}
                 />
                 <CardContent className={classes.cardContent}>
-                  <Typography gutterBottom variant='body2' component='h2'>
-                    {i.title.substring(0, 44)}...
+                  <Typography
+                    gutterBottom
+                    variant='body2'
+                    component='h2'
+                    style={{ textAlign: 'initial' }}
+                  >
+                    {i.title.substring(0, 50)}...
                   </Typography>
                   <div className={classes.priceText}>
                     <Typography
