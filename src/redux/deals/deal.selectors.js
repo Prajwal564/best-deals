@@ -4,7 +4,7 @@ const selectDeal = (state) => state.deal;
 
 export const selectCollections = createSelector(
   [selectDeal],
-  (deal) => deal.collections.offers
+  (deal) => deal.collections
 );
 
 export const selectIsCollectionFetching = createSelector(
