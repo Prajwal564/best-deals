@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Category from "../../components/Deal/Category/Category";
-import Hidden from "@material-ui/core/Hidden";
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Category from '../../components/Deal/Category/Category';
+import Hidden from '@material-ui/core/Hidden';
 
 //adverstisement
-import TopAd from "../../components/layout/advertisement/TopAd";
-import TopRightAd from "../../components/layout/advertisement/TopRightAd";
-import BottomRightAd from "../../components/layout/advertisement/BottomRightAd";
+import TopAd from '../../components/layout/advertisement/TopAd';
+import TopRightAd from '../../components/layout/advertisement/TopRightAd';
+import BottomRightAd from '../../components/layout/advertisement/BottomRightAd';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
-    margin: "1rem 1rem",
-    justifyContent: "space-between",
+    display: 'flex',
+    margin: '1rem 1rem',
+    justifyContent: 'space-between',
   },
   paper: {
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.palette.text.secondary,
   },
 }));
@@ -30,8 +30,8 @@ const Deals = ({ match }) => {
       <Hidden mdDown>
         <Grid container lg={2}></Grid>
       </Hidden>
-      <Grid container lg={7} md={9} xs={12} align="center" spacing={3}>
-        <Hidden only="xs">
+      <Grid container lg={7} md={9} xs={12} align='center' spacing={3}>
+        <Hidden only='xs'>
           <Grid item xs={12}>
             <TopAd />
           </Grid>
@@ -49,8 +49,8 @@ const Deals = ({ match }) => {
           md={3}
           lg={3}
           spacing={3}
-          direction="column"
-          align="center"
+          direction='column'
+          align='center'
         >
           <Grid item>
             <TopRightAd />

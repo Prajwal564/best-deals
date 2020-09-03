@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import deal from '../../../data/deal.json';
 import DealList from './DealList';
+import { selectCollections } from '../../../redux/deals/deal.selectors';
 
-const AllCategoryDeals = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      let offerDeal = deal.offers;
-      setData(offerDeal);
-    };
-    fetchData();
-  }, []);
-
+const AllCategoryDeals = ({ data }) => {
   return (
     <div>
       {data.map(({ category_id, ...otherProps }) => (
@@ -23,4 +15,8 @@ const AllCategoryDeals = () => {
   );
 };
 
-export default AllCategoryDeals;
+const mapStateToProps = createStructuredSelector({
+  data: selectCollections,
+});
+
+export default connect(mapStateToProps)(AllCategoryDeals);

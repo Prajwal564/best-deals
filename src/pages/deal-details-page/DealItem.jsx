@@ -1,40 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import deal from "../../data/deal.json";
-import DealItemDetail from "./DealItemDetail";
+import DealItemDetail from './DealItemDetail';
+import { selectCollections } from '../../redux/deals/deal.selectors';
 
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Hidden from "@material-ui/core/Hidden";
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 
 //adverstisement
-import TopAd from "../../components/layout/advertisement/TopAd";
-import TopRightAd from "../../components/layout/advertisement/TopRightAd";
-import BottomRightAd from "../../components/layout/advertisement/BottomRightAd";
+import TopAd from '../../components/layout/advertisement/TopAd';
+import TopRightAd from '../../components/layout/advertisement/TopRightAd';
+import BottomRightAd from '../../components/layout/advertisement/BottomRightAd';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
-    margin: "1rem 1rem",
-    justifyContent: "space-between",
+    display: 'flex',
+    margin: '1rem 1rem',
+    justifyContent: 'space-between',
   },
   paper: {
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.palette.text.secondary,
   },
 }));
 
-const DealItem = ({ match }) => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchItem = async () => {
-      let offerList = deal.offers;
-      setData(offerList);
-    };
-    fetchItem();
-  }, []);
-
+const DealItem = ({ match, data }) => {
   const classes = useStyles();
 
   return (
@@ -43,8 +35,8 @@ const DealItem = ({ match }) => {
         <Grid container lg={2}></Grid>
       </Hidden>
       <Grid container md={9} xs={12} lg={7} spacing={3}>
-        <Hidden only="xs">
-          <Grid item xs={12} align="center">
+        <Hidden only='xs'>
+          <Grid item xs={12} align='center'>
             <TopAd />
           </Grid>
         </Hidden>
@@ -65,8 +57,8 @@ const DealItem = ({ match }) => {
           md={3}
           lg={3}
           spacing={3}
-          direction="column"
-          align="center"
+          direction='column'
+          align='center'
         >
           <Grid item>
             <TopRightAd />
@@ -80,4 +72,8 @@ const DealItem = ({ match }) => {
   );
 };
 
-export default DealItem;
+const mapStateToProps = createStructuredSelector({
+  data: selectCollections,
+});
+
+export default connect(mapStateToProps)(DealItem);

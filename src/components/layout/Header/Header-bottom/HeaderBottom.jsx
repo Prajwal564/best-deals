@@ -1,5 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectCollections } from '../../../../redux/deals/deal.selectors';
 
 // material ui core
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -23,9 +27,6 @@ import Hidden from '@material-ui/core/Hidden';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import SearchIcon from '@material-ui/icons/Search';
-
-// deal json file
-import deal from '../../../../data/deal.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -145,7 +146,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function HeaderBottom() {
+const HeaderBottom = ({ data }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [opens, setOpens] = useState(false);
@@ -157,20 +158,6 @@ export default function HeaderBottom() {
   const handleDrawerClose = () => {
     setOpens(false);
   };
-
-  // deal json file state
-
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      let offerDeal = deal.offers;
-      setData(offerDeal);
-    };
-    fetchData();
-  }, []);
-
-  // ===========
 
   // select bar state
 
@@ -301,4 +288,10 @@ export default function HeaderBottom() {
       </nav>
     </div>
   );
-}
+};
+
+const mapStateToProps = createStructuredSelector({
+  data: selectCollections,
+});
+
+export default connect(mapStateToProps)(HeaderBottom);

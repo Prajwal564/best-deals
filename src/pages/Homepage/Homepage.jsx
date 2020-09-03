@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './Homepage.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';

@@ -1,39 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import FeaturedPlayListIcon from '@material-ui/icons/FeaturedPlayList';
+import { selectCollections } from '../../../redux/deals/deal.selectors';
 
 //json
-import data from "../../../data/deal.json";
-import SampleFeaturedCard from "./SampleFeaturedCard";
+import SampleFeaturedCard from './SampleFeaturedCard';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
-    backgroundColor: "#ffffff",
-    padding: "10px",
+    backgroundColor: '#ffffff',
+    padding: '10px',
   },
 
   title: {
-    display: "flex",
-    borderBottom: "1px solid gray",
-    alignItems: "center",
-    paddingBottom: "10px",
+    display: 'flex',
+    borderBottom: '1px solid gray',
+    alignItems: 'center',
+    paddingBottom: '10px',
   },
 }));
 
-const FeaturedDeal = () => {
+const FeaturedDeal = ({ data }) => {
   const classes = useStyles();
-  const [offer, setDeal] = useState([]);
-
-  useEffect(() => {
-    const fetchDeals = async () => {
-      let dealItem = data.offers;
-      setDeal(dealItem);
-    };
-    fetchDeals();
-  }, []);
 
   return (
     <div className={classes.root}>
@@ -41,10 +34,10 @@ const FeaturedDeal = () => {
         <Grid item xs={12}>
           <div className={classes.title}>
             <FeaturedPlayListIcon />
-            <span style={{ marginLeft: "5px" }}>Featured Deal</span>
+            <span style={{ marginLeft: '5px' }}>Featured Deal</span>
           </div>
         </Grid>
-        {offer.slice(2, 3).map((item) => (
+        {data.slice(2, 3).map((item) => (
           <SampleFeaturedCard
             featuredProducts={item.products}
             category_label={item.category_label}
@@ -55,4 +48,8 @@ const FeaturedDeal = () => {
   );
 };
 
-export default FeaturedDeal;
+const mapStateToProps = createStructuredSelector({
+  data: selectCollections,
+});
+
+export default connect(mapStateToProps)(FeaturedDeal);

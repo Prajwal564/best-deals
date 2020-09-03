@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
-
-//json data
-import data from '../../../data/deal.json';
+import { selectCollections } from '../../../redux/deals/deal.selectors';
 
 //sample card
 import HotDealCard from './HotDealCard';
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: '#ffffff',
-    marginTop: '2em',
+    marginTop: '10px',
     padding: '10px',
     boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.25)',
   },
@@ -34,17 +34,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HotDeal = () => {
+const HotDeal = ({ data }) => {
   const classes = useStyles();
-  const [deal, setDeal] = useState([]);
-
-  useEffect(() => {
-    const fetchDeals = async () => {
-      let dealItem = data.offers;
-      setDeal(dealItem);
-    };
-    fetchDeals();
-  }, []);
 
   return (
     <div className={classes.root}>
@@ -55,7 +46,7 @@ const HotDeal = () => {
             <span>Hot Deal</span>
           </div>
         </Grid>
-        {deal.slice(0, 1).map((product) => (
+        {data.slice(0, 1).map((product) => (
           <HotDealCard
             products={product.products}
             category_label={product.category_label}
@@ -66,4 +57,8 @@ const HotDeal = () => {
   );
 };
 
-export default HotDeal;
+const mapStateToProps = createStructuredSelector({
+  data: selectCollections,
+});
+
+export default connect(mapStateToProps)(HotDeal);
