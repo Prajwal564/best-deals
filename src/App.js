@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { fetchCollectionsStartAsync } from './redux/deals/deal.actions';
+import { fetchCollectionsStart } from './redux/deals/deal.actions';
 import Header from './components/layout/Header/Header';
 import Deals from './pages/Deals/Deals';
 import DealCategory from './pages/Deals/DealCategory';
 import DealItem from './pages/deal-details-page/DealItem';
 import Homepage from './pages/Homepage/Homepage';
 
-const App = ({ fetchCollectionsStartAsync }) => {
+const App = ({ fetchCollectionsStart }) => {
   useEffect(() => {
-    fetchCollectionsStartAsync();
-  }, [fetchCollectionsStartAsync]);
+    fetchCollectionsStart();
+  }, [fetchCollectionsStart]);
 
   return (
     <>
@@ -30,7 +30,7 @@ const App = ({ fetchCollectionsStartAsync }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchCollectionsStartAsync: () => dispatch(fetchCollectionsStartAsync()),
+  fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
 });
 
 export default connect(null, mapDispatchToProps)(App);
