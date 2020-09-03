@@ -1,5 +1,4 @@
 import ShopActionTypes from './deal.types';
-// import DEAL_DATA from './deal.data';
 
 const INITIAL_STATE = {
   collections: [],
