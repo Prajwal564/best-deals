@@ -7,7 +7,7 @@ const BottomAd = () => {
     <div>
       <img
         src={Bottom}
-        style={{ width: "733px", height: "87.62px" }}
+        style={{ width: "728px", height: "90px" }}
         alt="Advertisement"
       ></img>
     </div>
