@@ -56,9 +56,8 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     position: 'fixed',
     top: '65px',
-    bottom: '15px',
     width: 'auto',
-    height: '90vh',
+    height: '78vh',
     '&::-webkit-scrollbar': {
       width: '0.2em',
     },

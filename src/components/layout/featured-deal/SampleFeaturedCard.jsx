@@ -53,6 +53,7 @@ const SampleFeaturedCard = ({ featuredProducts, category_label }) => {
                   <Typography>
                     <Rating
                       name='half-rating-read'
+                      size='small'
                       defaultValue={deal.reviewRating}
                       readOnly
                     />
