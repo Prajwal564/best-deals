@@ -8,6 +8,7 @@ import Deals from './pages/Deals/Deals';
 import DealCategory from './pages/Deals/DealCategory';
 import DealItem from './pages/deal-details-page/DealItem';
 import Homepage from './pages/Homepage/Homepage';
+import Footer from './components/layout/Footer/Footer';
 
 const App = ({ fetchCollectionsStart }) => {
   useEffect(() => {
@@ -25,6 +26,7 @@ const App = ({ fetchCollectionsStart }) => {
           <Route path='/category/:cid' component={DealCategory} />
         </Switch>
       </div>
+      <Footer />
     </>
   );
 };

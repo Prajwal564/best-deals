@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     height: '320px',
     width: 'auto',
-    border: '0.5px solid gray',
+    border: '0.5px solid #8C8A8A',
   },
   cardContent: {
     height: '90px',
@@ -105,7 +105,7 @@ const DealList = ({ products, category_label }) => {
                     disableElevation
                     component={Link}
                     to={`/category/${category_label}/deals/${i.id}`}
-                    color='inherit'
+                    color='textSecondary'
                   >
                     View Details
                   </Button>
