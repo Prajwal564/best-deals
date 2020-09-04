@@ -5,6 +5,7 @@ import { Typography, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import Hidden from '@material-ui/core/Hidden';
 
 //material-ui icons
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -42,7 +43,7 @@ const Footer = () => {
           </Link>
           {' All Rights Reserved.'}
         </Typography>
-        <div className={classes.socialIcon}>
+        <Hidden xsDown>
           <IconButton>
             <FacebookIcon style={{ fill: '#cef5cb' }} />
           </IconButton>
@@ -55,7 +56,7 @@ const Footer = () => {
           <IconButton>
             <PinterestIcon style={{ fill: '#cef5cb' }} />
           </IconButton>
-        </div>
+        </Hidden>
       </Container>
     </footer>
   );

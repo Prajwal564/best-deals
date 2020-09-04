@@ -40,9 +40,9 @@ const HotDealCard = ({ products, category_label }) => {
   return (
     <React.Fragment>
       {products
-        .filter((deal, i) => i < 4)
+        .filter((deal, i) => i < 8)
         .map((deal) => (
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={6} sm={3} xl={2}>
             <Card className={classes.rootCard}>
               <CardActionArea
                 component={Link}
