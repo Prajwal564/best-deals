@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ReactComponent as IncomeHonchoLogo } from './income_honcho.svg';
+import SignInPopUp from './SignInPopUp';
+import HeaderSearchBar from './SearchBar';
 import DrawerList from './DrawerList';
+import { ReactComponent as IncomeHonchoLogo } from './income_honcho.svg';
 
 //material-ui
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -16,30 +18,8 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 
 //Icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGooglePlusG } from '@fortawesome/free-brands-svg-icons';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
-import SearchIcon from '@material-ui/icons/Search';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Avatar from '@material-ui/core/Avatar';
-
-//hover pop up
-import Popover from '@material-ui/core/Popover';
-import SearchBar from 'material-ui-search-bar';
-
-//Sign In Dialog
-import TextField from '@material-ui/core/TextField';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
-
-//colors
-import red from '@material-ui/core/colors/red';
-import blue from '@material-ui/core/colors/blue';
-import green from '@material-ui/core/colors/green';
 
 // import Alert from "@material-ui/lab/Alert";
 
@@ -103,44 +83,9 @@ const useStyles = makeStyles((theme) => ({
   fixedDrawerHeader: {
     padding: theme.spacing(2),
   },
-  searchIcon: {
-    color: '#034376',
+  headerRightIcon: {
+    display: 'flex',
     marginLeft: 'auto',
-    marginRight: '10px',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: '#262626',
-    marginTop: '4%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-  },
-  btnFacebook: {
-    backgroundColor: '#4267B2',
-    height: '7vh',
-    color: 'white',
-    borderRadius: '4px',
-    '&:hover': {
-      backgroundColor: blue[800],
-    },
-  },
-  btnGoogle: {
-    backgroundColor: '#DD4B39',
-    borderRadius: '4px',
-    height: '7vh',
-    color: 'white',
-    '&:hover': {
-      backgroundColor: red[600],
-    },
-  },
-  btnSignIn: {
-    backgroundColor: '#018E01',
-    height: '7vh',
-    color: 'white',
-    borderRadius: '4px',
-    '&:hover': {
-      backgroundColor: green[500],
-    },
   },
 }));
 
@@ -149,51 +94,12 @@ const HeaderMiddle = () => {
   const theme = useTheme();
   const [opens, setOpens] = useState(false);
 
-  //Sign In Popover
-  const [openSignIn, setOpenSignIn] = useState(false);
-
-  const [username, setUsername] = useState('');
-
-  // search bar
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : null;
-
-  //=============
-
   const handleDrawerOpen = () => {
     setOpens(!opens);
   };
 
   const handleDrawerClose = () => {
     setOpens(false);
-  };
-
-  //======Sign In Popover=========//
-
-  const handleSignInOpen = () => {
-    setOpenSignIn(!openSignIn);
-  };
-
-  const handleSignInClose = () => {
-    setOpenSignIn(false);
-  };
-
-  const handleUserName = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
   };
 
   return (
@@ -221,110 +127,12 @@ const HeaderMiddle = () => {
             <Button disableRipple>Stores</Button>
             <Button disableRipple>Blogs</Button>
           </Hidden>
-          <div className={classes.searchIcon}>
-            <IconButton onClick={handleClick} aria-describedby={id}>
-              <SearchIcon />
-            </IconButton>
+          <div className={classes.headerRightIcon}>
+            {/* Search Icon */}
+            <HeaderSearchBar />
+            {/* // sign in popover */}
+            <SignInPopUp />
           </div>
-
-          {/* //popover */}
-          {/* <Hidden smDown> */}
-
-          <Button disableRipple onClick={handleSignInOpen}>
-            Sign In
-          </Button>
-
-          {/* //==========Dialog============// */}
-
-          <Dialog maxWidth='xs' onClose={handleSignInClose} open={openSignIn}>
-            <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <DialogTitle align='center'>Sign In</DialogTitle>
-
-            <DialogContent>
-              <DialogActions>
-                <Button
-                  className={classes.btnFacebook}
-                  disableRipple
-                  fullWidth
-                  size='medium'
-                  variant='contained'
-                  startIcon={<FacebookIcon>facebook</FacebookIcon>}
-                >
-                  Sign In with Facebook
-                </Button>{' '}
-              </DialogActions>
-              <DialogActions>
-                <Button
-                  className={classes.btnGoogle}
-                  fullWidth
-                  disableRipple
-                  size='medium'
-                  variant='contained'
-                >
-                  <FontAwesomeIcon
-                    icon={faGooglePlusG}
-                    style={{ marginRight: '8px' }}
-                  />
-                  Sign In with Google
-                </Button>{' '}
-              </DialogActions>
-              <Typography variant='subtitle1' align='center'>
-                OR
-              </Typography>
-
-              <DialogActions>
-                <form>
-                  <TextField
-                    variant='outlined'
-                    margin='normal'
-                    required
-                    fullWidth
-                    id={username}
-                    label='Email Address'
-                    type='email'
-                    name='email'
-                    autoComplete='email'
-                    autoFocus
-                    onChange={handleUserName}
-                  />
-
-                  <TextField
-                    variant='outlined'
-                    required
-                    fullWidth
-                    name='password'
-                    label='Password'
-                    type='password'
-                    id='password'
-                    autoComplete='current-password'
-                  />
-                </form>
-              </DialogActions>
-              <DialogActions style={{ display: 'block', align: 'left' }}>
-                <Link href='#' underline='hover' align='left'>
-                  Forgot password?
-                </Link>
-              </DialogActions>
-
-              <DialogActions>
-                <Button
-                  className={classes.btnSignIn}
-                  fullWidth
-                  disableRipple
-                  type='submit'
-                  size='medium'
-                  variant='contained'
-                  onSubmit={handleSubmit}
-                >
-                  Sign In
-                </Button>
-              </DialogActions>
-            </DialogContent>
-          </Dialog>
-
-          {/* </Hidden> */}
         </Toolbar>
       </AppBar>
 
@@ -370,31 +178,6 @@ const HeaderMiddle = () => {
           </Drawer>
         </Hidden>
       </nav>
-
-      {/* popover for search */}
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-      >
-        <SearchBar
-          onChange={() => console.log('onChange')}
-          onRequestSearch={() => console.log('onRequestSearch')}
-          style={{
-            margin: '0 auto',
-            maxWidth: 800,
-          }}
-        />
-      </Popover>
     </div>
   );
 };
