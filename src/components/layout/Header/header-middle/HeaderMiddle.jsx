@@ -87,6 +87,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     marginLeft: 'auto',
   },
+  headerLogoSmall: {
+    width: '70px',
+    cursor: 'pointer',
+  },
 }));
 
 const HeaderMiddle = () => {
@@ -117,7 +121,16 @@ const HeaderMiddle = () => {
           </IconButton>
           <div className={classes.logo}>
             <Link to='/'>
-              <IncomeHonchoLogo />
+              <Hidden smDown>
+                <IncomeHonchoLogo />
+              </Hidden>
+              <Hidden mdUp>
+                <img
+                  className={classes.headerLogoSmall}
+                  src='https://i.imgur.com/6LMKoA1.png'
+                  alt='ih-logo'
+                />
+              </Hidden>
             </Link>
           </div>
           <Hidden smDown>

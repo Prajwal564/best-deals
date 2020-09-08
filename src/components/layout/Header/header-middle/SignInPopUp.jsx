@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import Hidden from '@material-ui/core/Hidden';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
@@ -89,11 +88,9 @@ const SignInPopUp = () => {
 
   return (
     <>
-      <Hidden smDown>
-        <Button disableRipple onClick={handleSignInOpen}>
-          Sign In
-        </Button>
-      </Hidden>
+      <Button disableRipple onClick={handleSignInOpen}>
+        Sign In
+      </Button>
 
       {/* //==========Dialog============// */}
       <Dialog maxWidth='xs' onClose={handleSignInClose} open={openSignIn}>
