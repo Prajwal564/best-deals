@@ -138,7 +138,12 @@ const HeaderMiddle = () => {
               Deals
             </Button>
             <Button disableRipple>Stores</Button>
-            <Button disableRipple>Blogs</Button>
+            <Button component={Link} to='/history' disableRipple>
+              History
+            </Button>
+            <Button component={Link} to='/hearted' disableRipple>
+              Hearted
+            </Button>
           </Hidden>
           <div className={classes.headerRightIcon}>
             {/* Search Icon */}

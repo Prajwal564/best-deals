@@ -9,6 +9,8 @@ import DealCategory from './pages/Deals/DealCategory';
 import DealItem from './pages/deal-details-page/DealItem';
 import Homepage from './pages/Homepage/Homepage';
 import Footer from './components/layout/Footer/Footer';
+import HeartedPage from './components/Hearted/HeartedPage';
+import HistoryPage from './components/History/HistoryPage';
 
 const App = ({ fetchCollectionsStart }) => {
   useEffect(() => {
@@ -24,6 +26,8 @@ const App = ({ fetchCollectionsStart }) => {
           <Route exact path='/deals' component={Deals} />
           <Route path='/category/:cid/deals/:did' component={DealItem} />
           <Route path='/category/:cid' component={DealCategory} />
+          <Route path='/history' component={HistoryPage} />
+          <Route path='/hearted' component={HeartedPage} />
         </Switch>
       </div>
       <Footer />
