@@ -133,7 +133,7 @@ const HeaderMiddle = () => {
               </Hidden>
             </Link>
           </div>
-          <Hidden smDown>
+          <Hidden xsDown>
             <Button component={Link} to='/deals' disableRipple>
               Deals
             </Button>
