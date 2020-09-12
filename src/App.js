@@ -3,12 +3,12 @@ import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { fetchCollectionsStart } from './redux/deals/deal.actions';
-import Header from './components/layout/Header/Header';
+import Header from './components/utils/Header/Header';
 import Deals from './pages/Deals/Deals';
 import DealCategory from './pages/Deals/DealCategory';
 import DealItem from './pages/deal-details-page/DealItem';
 import Homepage from './pages/Homepage/Homepage';
-import Footer from './components/layout/Footer/Footer';
+import Footer from './components/utils/Footer/Footer';
 import HeartedPage from './components/Hearted/HeartedPage';
 import HistoryPage from './components/History/HistoryPage';
 

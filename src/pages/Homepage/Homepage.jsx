@@ -3,11 +3,11 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 
-import HotDeal from '../../components/layout/hot-deal/HotDeal';
-import FeaturedDeal from '../../components/layout/featured-deal/FeaturedDeal';
+import HotDeal from '../../components/utils/hot-deal/HotDeal';
+import FeaturedDeal from '../../components/utils/featured-deal/FeaturedDeal';
 
 //advertisement
-import BottomAd from '../../components/layout/advertisement/BottomAd';
+import BottomAd from '../../components/utils/advertisement/BottomAd';
 
 import Layout from '../../components/Layout';
 
