@@ -17,6 +17,7 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: '2em',
+    textAlign: 'left',
   },
   crossedLine: {
     textDecoration: 'line-through',
@@ -74,7 +75,10 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     padding: 5,
     font: 'Lato',
-    top: 250,
+    top: 240,
+    [theme.breakpoints.down('xs')]: {
+      top: 140,
+    },
     marginLeft: -17,
   },
 }));
