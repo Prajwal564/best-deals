@@ -83,6 +83,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// const DealItemDetail = (i) => {
+
 const DealItemDetail = (i) => {
   const classes = useStyles();
 

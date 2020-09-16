@@ -11,6 +11,9 @@ import Rating from '@material-ui/lab/Rating';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+import { addItem } from '../../../redux/history/history.action';
+
 const useStyles = makeStyles((theme) => ({
   rootCard: {
     maxWidth: 345,
@@ -35,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HotDealCard = ({ products, category_label }) => {
+const HotDealCard = ({ products, category_label, addItem }) => {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -47,6 +50,7 @@ const HotDealCard = ({ products, category_label }) => {
               <CardActionArea
                 component={Link}
                 to={`/category/${category_label}/deals/${deal.id}`}
+                onClick={() => addItem(deal)}
               >
                 <CardMedia className={classes.media} image={deal.imageUrl} />
                 <CardContent style={{ padding: '6px' }}>
@@ -84,6 +88,7 @@ const HotDealCard = ({ products, category_label }) => {
                   color='primary'
                   component={Link}
                   to={`/category/${category_label}/deals/${deal.id}`}
+                  onClick={() => addItem(deal)}
                 >
                   View Details
                 </Button>
@@ -95,4 +100,8 @@ const HotDealCard = ({ products, category_label }) => {
   );
 };
 
-export default HotDealCard;
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (deal) => dispatch(addItem(deal)),
+});
+
+export default connect(null, mapDispatchToProps)(HotDealCard);
