@@ -11,6 +11,9 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
+import { connect } from 'react-redux';
+import { addItem } from '../../../redux/history/history.action';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -42,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DealList = ({ products, category_label }) => {
+const DealList = ({ products, category_label, addItem }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -65,6 +68,7 @@ const DealList = ({ products, category_label }) => {
                 <CardActionArea
                   component={Link}
                   to={`/category/${category_label}/deals/${i.id}`}
+                  onClick={() => addItem(i)}
                 >
                   <CardMedia
                     component='img'
@@ -106,6 +110,7 @@ const DealList = ({ products, category_label }) => {
                     component={Link}
                     to={`/category/${category_label}/deals/${i.id}`}
                     color='textSecondary'
+                    onClick={() => addItem(i)}
                   >
                     View Details
                   </Button>
@@ -133,4 +138,8 @@ const DealList = ({ products, category_label }) => {
   );
 };
 
-export default DealList;
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (i) => dispatch(addItem(i)),
+});
+
+export default connect(null, mapDispatchToProps)(DealList);
