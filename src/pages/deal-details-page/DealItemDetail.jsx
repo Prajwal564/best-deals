@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import moment from "moment";
 
 import Paper from "@material-ui/core/Paper";
@@ -14,9 +15,13 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 
+//hearted
+import { addItem } from "../../redux/hearted/hearted.action";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: "2em",
+    textAlign: "left",
   },
   crossedLine: {
     textDecoration: "line-through",
@@ -73,15 +78,19 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     textTransform: "uppercase",
     padding: 5,
+
     font: "Lato",
-    top: 250,
+    top: 240,
+    [theme.breakpoints.down("xs")]: {
+      top: 140,
+    },
     marginLeft: -17,
   },
 }));
 
 const DealItemDetail = (i) => {
+  const { addHearted } = i;
   const classes = useStyles();
-  const [hearted, setHearted] = useState([]);
 
   const DealEndedMsg = () => {
     return (
@@ -98,11 +107,6 @@ const DealItemDetail = (i) => {
         {moment(`${i.endDate}`, "YYYY-MM-DD, hh:mm:ss").fromNow()}
       </Typography>
     );
-  };
-
-  const heartedHandler = () => {
-    setHearted();
-    console.log(hearted);
   };
 
   var remainingTime = moment(i.endDate).diff(moment());
@@ -193,7 +197,7 @@ const DealItemDetail = (i) => {
               border: "1px solid green",
             }}
           >
-            <FavoriteIcon onClick={heartedHandler} />
+            <FavoriteIcon onClick={() => addHearted(i)} />
           </Fab>
         </Grid>
         <Grid
@@ -217,4 +221,8 @@ const DealItemDetail = (i) => {
   );
 };
 
-export default DealItemDetail;
+const mapDispatchToProps = (dispatch) => ({
+  addHearted: (i) => dispatch(addItem(i)),
+});
+
+export default connect(null, mapDispatchToProps)(DealItemDetail);
