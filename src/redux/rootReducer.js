@@ -1,13 +1,18 @@
 import { combineReducers } from "redux";
 
 import dealReducer from "./deals/deal.reducer";
-import HeartedReducer from "./hearted/hearted.reducer";
+import heartedReducer from "./hearted/hearted.reducer";
 import userReducer from "./user/user.reducer";
+
+import historyReducer from "./history/history.reducer";
 
 const rootReducer = combineReducers({
   deal: dealReducer,
   user: userReducer,
-  hearted: HeartedReducer,
+
+  hearted: heartedReducer,
+
+  history: historyReducer,
 });
 
 export default rootReducer;

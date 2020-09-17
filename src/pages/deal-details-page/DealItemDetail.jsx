@@ -16,7 +16,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 
 //hearted
-import { addItem } from "../../redux/hearted/hearted.action";
+import { addFavItem } from "../../redux/hearted/hearted.action";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,6 +87,8 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: -17,
   },
 }));
+
+// const DealItemDetail = (i) => {
 
 const DealItemDetail = (i) => {
   const { addHearted } = i;
@@ -222,7 +224,7 @@ const DealItemDetail = (i) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  addHearted: (i) => dispatch(addItem(i)),
+  addHearted: (i) => dispatch(addFavItem(i)),
 });
 
 export default connect(null, mapDispatchToProps)(DealItemDetail);

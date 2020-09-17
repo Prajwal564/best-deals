@@ -11,6 +11,7 @@ const middlewares = [sagaMiddleware];
 
 export const store = createStore(
   rootReducer,
+
   composeWithDevTools(applyMiddleware(...middlewares))
 );
 

@@ -1,11 +1,11 @@
-import HeartedActionTypes from './hearted.types';
+import HeartedActionTypes from "./hearted.types";
 
-export const addItem = (item) => ({
-  type: HeartedActionTypes.ADD_ITEM,
+export const addFavItem = (item) => ({
+  type: HeartedActionTypes.ADD_HEARTED_ITEM,
   payload: item,
 });
 
-export const removeItem = (item) => ({
-  type: HeartedActionTypes.REMOVE_ITEM,
+export const removeFavItem = (item) => ({
+  type: HeartedActionTypes.REMOVE_HEARTED_ITEM,
   payload: item,
 });

@@ -12,7 +12,7 @@ const DealItem = ({ match, data }) => {
     <Layout>
       <Grid item xs={12}>
         {data
-          .filter(({ category_label }) => category_label === match.params.cid)
+          .filter(( {category_label }) => category_label === match.params.cid)
           .map(({ products }) =>
             products
               .filter((product) => product.id === match.params.did)

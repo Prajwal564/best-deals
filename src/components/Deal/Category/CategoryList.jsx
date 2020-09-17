@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addItem } from '../../../redux/history/history.action';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -38,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CategoryList = ({ category_label, products }) => {
+const CategoryList = ({ category_label, products, addItem }) => {
   const classes = useStyles();
 
   return (
@@ -61,6 +63,7 @@ const CategoryList = ({ category_label, products }) => {
               <CardActionArea
                 component={Link}
                 to={`/category/${category_label}/deals/${i.id}`}
+                onClick={() => addItem(i)}
               >
                 <CardMedia
                   component='img'
@@ -105,6 +108,7 @@ const CategoryList = ({ category_label, products }) => {
                   disableElevation
                   component={Link}
                   to={`/category/${category_label}/deals/${i.id}`}
+                  onClick={() => addItem(i)}
                 >
                   View Details
                 </Button>
@@ -117,4 +121,8 @@ const CategoryList = ({ category_label, products }) => {
   );
 };
 
-export default CategoryList;
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (i) => dispatch(addItem(i)),
+});
+
+export default connect(null, mapDispatchToProps)(CategoryList);

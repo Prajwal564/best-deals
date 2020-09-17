@@ -1,23 +1,22 @@
 import HeartedActionTypes from "./hearted.types";
-import { addHistoryItem } from "./hearted.utils";
+import { addHeartedItem, removeHeartedItem } from "./hearted.utils";
 
 const INITIAL_STATE = {
   HeartedItems: [],
 };
 
-const HeartedReducer = (state = INITIAL_STATE, action) => {
+const heartedReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case HeartedActionTypes.ADD_ITEM:
+    case HeartedActionTypes.ADD_HEARTED_ITEM:
       return {
         ...state,
-        // HeartedItems: [...state.HeartedItems, action.payload],
-        HeartedItems: addHistoryItem(state.HeartedItems, action.payload),
+        HeartedItems: addHeartedItem(state.HeartedItems, action.payload),
       };
 
-    case HeartedActionTypes.REMOVE_ITEM:
+    case HeartedActionTypes.REMOVE_HEARTED_ITEM:
       return {
         ...state,
-        HeartedItems: [],
+        HeartedItems: removeHeartedItem(state.HeartedItems, action.payload),
       };
 
     default:
@@ -25,4 +24,4 @@ const HeartedReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default HeartedReducer;
+export default heartedReducer;
