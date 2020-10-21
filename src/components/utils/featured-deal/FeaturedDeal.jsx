@@ -5,10 +5,14 @@ import { createStructuredSelector } from 'reselect';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import FeaturedPlayListIcon from '@material-ui/icons/FeaturedPlayList';
-import { selectCollections } from '../../../redux/deals/deal.selectors';
+import {
+  selectCollections,
+  selectIsCollectionFetching,
+} from '../../../redux/deals/deal.selectors';
 
 //json
 import SampleFeaturedCard from './SampleFeaturedCard';
+import DealSkeleton from '../skeletons/DealSkeleton';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -25,7 +29,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const FeaturedDeal = ({ data }) => {
+const FeaturedDeal = ({ data, isLoading }) => {
   const classes = useStyles();
 
   return (
@@ -37,12 +41,24 @@ const FeaturedDeal = ({ data }) => {
             <span style={{ marginLeft: '5px' }}>Featured Deal</span>
           </div>
         </Grid>
-        {data.slice(2, 3).map((item) => (
-          <SampleFeaturedCard
-            featuredProducts={item.products}
-            category_label={item.category_label}
-          />
-        ))}
+        {isLoading ? (
+          (
+          <DealSkeleton  />
+
+        )        ) : (
+          (
+          data
+            
+            .slice(2, 3)
+            
+            .map((item) => (
+                  <SampleFeaturedCard
+                    featuredProducts={item.products}
+                    category_label={item.category_label}
+                  />
+                )))
+        
+        )}
       </Grid>
     </div>
   );
@@ -50,6 +66,7 @@ const FeaturedDeal = ({ data }) => {
 
 const mapStateToProps = createStructuredSelector({
   data: selectCollections,
+  isLoading: selectIsCollectionFetching,
 });
 
 export default connect(mapStateToProps)(FeaturedDeal);

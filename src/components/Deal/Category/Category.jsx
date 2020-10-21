@@ -5,7 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import CategoryList from './CategoryList';
 import { selectCollections } from '../../../redux/deals/deal.selectors';
 
-const Category = ({ match, data }) => {
+const Category = ({ match, data, isLoading }) => {
   return (
     <div>
       {data

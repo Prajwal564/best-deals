@@ -64,7 +64,7 @@ const HotDealCard = ({ products, category_label, addItem }) => {
                   </Typography>
                   <div style={{ height: '5.5vh' }}>
                     <Typography gutterBottom style={{ fontSize: '13px' }}>
-                      {deal.title.slice(0, 20)}
+                      {deal.title.slice(0, 40)}
                       {'...'}
                     </Typography>
                   </div>

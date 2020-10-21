@@ -3,20 +3,30 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import DealList from './DealList';
-import { selectCollections } from '../../../redux/deals/deal.selectors';
+import {
+  selectCollections,
+  selectIsCollectionFetching,
+} from '../../../redux/deals/deal.selectors';
 
-const AllCategoryDeals = ({ data }) => {
+import AllDealSkeleton from '../../utils/skeletons/AllDealSkeleton';
+
+const AllCategoryDeals = ({ data, isLoading }) => {
   return (
     <div>
-      {data.map(({ category_id, ...otherProps }) => (
-        <DealList key={category_id} {...otherProps} />
-      ))}
+      {isLoading ? (
+        <AllDealSkeleton />
+      ) : (
+        data.map(({ category_id, ...otherProps }) => (
+          <DealList key={category_id} {...otherProps} />
+        ))
+      )}
     </div>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
   data: selectCollections,
+  isLoading: selectIsCollectionFetching,
 });
 
 export default connect(mapStateToProps)(AllCategoryDeals);

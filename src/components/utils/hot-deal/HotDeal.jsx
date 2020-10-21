@@ -1,14 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import {
+  selectCollections,
+  selectIsCollectionFetching,
+} from '../../../redux/deals/deal.selectors';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
-import { selectCollections } from '../../../redux/deals/deal.selectors';
 
 //sample card
 import HotDealCard from './HotDealCard';
+import DealSkeleton from '../skeletons/DealSkeleton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HotDeal = ({ data }) => {
+const HotDeal = ({ data, isLoading }) => {
   const classes = useStyles();
 
   return (
@@ -46,12 +50,18 @@ const HotDeal = ({ data }) => {
             <span>Hot Deal</span>
           </div>
         </Grid>
-        {data.slice(0, 1).map((product) => (
-          <HotDealCard
-            products={product.products}
-            category_label={product.category_label}
-          />
-        ))}
+        {isLoading ? (
+            <DealSkeleton/>
+        ) : (
+          data
+            .slice(0, 1)
+            .map((product) => (
+              <HotDealCard
+                products={product.products}
+                category_label={product.category_label}
+              />
+            ))
+        )}
       </Grid>
     </div>
   );
@@ -59,6 +69,7 @@ const HotDeal = ({ data }) => {
 
 const mapStateToProps = createStructuredSelector({
   data: selectCollections,
+  isLoading: selectIsCollectionFetching,
 });
 
 export default connect(mapStateToProps)(HotDeal);

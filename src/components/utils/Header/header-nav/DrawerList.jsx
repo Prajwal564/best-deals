@@ -7,14 +7,21 @@ import DrawerListItem from './DrawerListItem';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectCollections } from '../../../../redux/deals/deal.selectors';
+import {
+  selectCollections,
+  selectIsCollectionFetching,
+} from '../../../../redux/deals/deal.selectors';
 
-const DrawerList = ({ data }) => {
+import CategoryListSkeleton from '../../../utils/skeletons/CategoryListSkeleton';
+
+const DrawerList = ({ data, isLoading }) => {
   const [currentTab, setCurrentTab] = useState('');
   return (
-    <>
-      <List style={{ borderTop: '1px solid lightgray' }}>
-        {data.map(({ category_label }) => (
+    <List style={{ borderTop: '1px solid lightgray' }}>
+      {isLoading ? (
+        <CategoryListSkeleton />
+      ) : (
+        data.map(({ category_label }) => (
           <>
             <Link
               to={`/category/${category_label}`}
@@ -28,14 +35,15 @@ const DrawerList = ({ data }) => {
             </Link>
             <Divider />
           </>
-        ))}
-      </List>
-    </>
+        ))
+      )}
+    </List>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
   data: selectCollections,
+  isLoading: selectIsCollectionFetching,
 });
 
 export default connect(mapStateToProps)(DrawerList);
