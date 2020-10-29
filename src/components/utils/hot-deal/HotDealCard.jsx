@@ -53,7 +53,7 @@ const HotDealCard = ({ products, category_label, addItem }) => {
                 onClick={() => addItem(deal)}
               >
                 <CardMedia className={classes.media} image={deal.imageUrl} />
-                <CardContent style={{ padding: '6px' }}>
+                <CardContent style={{ padding: '6px' }} align='center'>
                   <Typography>
                     <Rating
                       name='half-rating-read'
@@ -62,8 +62,8 @@ const HotDealCard = ({ products, category_label, addItem }) => {
                       readOnly
                     />
                   </Typography>
-                  <div style={{ height: '5.5vh' }}>
-                    <Typography gutterBottom style={{ fontSize: '13px' }}>
+                  <div style={{ height: 50 }}>
+                    <Typography gutterBottom style={{ fontSize: 13 }}>
                       {deal.title.slice(0, 40)}
                       {'...'}
                     </Typography>

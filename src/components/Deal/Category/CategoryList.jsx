@@ -73,12 +73,7 @@ const CategoryList = ({ category_label, products, addItem }) => {
                   title={i.title}
                 />
                 <CardContent className={classes.cardContent}>
-                  <Typography
-                    gutterBottom
-                    variant='body2'
-                    component='h2'
-                    style={{ textAlign: 'initial' }}
-                  >
+                  <Typography gutterBottom variant='body2' component='h2'>
                     {i.title.substring(0, 70)}...
                   </Typography>
                   <div className={classes.priceText}>

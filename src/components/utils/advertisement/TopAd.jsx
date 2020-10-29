@@ -1,16 +1,13 @@
-import Top from "./ad-images/top.svg";
+import React from 'react';
 
-import React from "react";
+import Grid from '@material-ui/core/Grid';
+import Top from './ad-images/top.svg';
 
 const TopAd = () => {
   return (
-    <div>
-      <img
-        src={Top}
-        style={{ width: "728px", height: "90px" }}
-        alt="Advertisement"
-      ></img>
-    </div>
+    <Grid item sm={12} align='center'>
+      <img src={Top} width='728px' height='90px' alt='Advertisement' />
+    </Grid>
   );
 };
 

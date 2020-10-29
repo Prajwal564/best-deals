@@ -78,12 +78,7 @@ const DealList = ({ products, category_label, addItem }) => {
                     title={i.title}
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography
-                      gutterBottom
-                      variant='body2'
-                      component='h2'
-                      style={{ textAlign: 'initial' }}
-                    >
+                    <Typography gutterBottom variant='body2' component='h2'>
                       {i.title.substring(0, 50)}...
                     </Typography>
                     <div className={classes.priceText}>

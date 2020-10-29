@@ -1,17 +1,9 @@
-import topRight from "./ad-images/topRight.svg";
+import topRight from './ad-images/topRight.svg';
 
-import React from "react";
+import React from 'react';
 
 const TopRightAd = () => {
-  return (
-    <div>
-      <img
-        src={topRight}
-        style={{ width: "300px", height: "600px" }}
-        alt="Advertisement"
-      ></img>
-    </div>
-  );
+  return <img src={topRight} width='300' height='600' alt='Advertisement' />;
 };
 
 export default TopRightAd;

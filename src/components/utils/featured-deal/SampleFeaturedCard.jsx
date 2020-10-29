@@ -53,7 +53,7 @@ const SampleFeaturedCard = ({ featuredProducts, category_label, addItem }) => {
                 onClick={() => addItem(deal)}
               >
                 <CardMedia className={classes.media} image={deal.imageUrl} />
-                <CardContent style={{ padding: '2%' }}>
+                <CardContent style={{ padding: '2%' }} align='center'>
                   <Typography>
                     <Rating
                       name='half-rating-read'
@@ -62,7 +62,7 @@ const SampleFeaturedCard = ({ featuredProducts, category_label, addItem }) => {
                       readOnly
                     />
                   </Typography>
-                  <div style={{ height: '5.5vh' }}>
+                  <div style={{ height: '120' }}>
                     <Typography gutterBottom style={{ fontSize: '13px' }}>
                       {deal.title.slice(0, 40)}
                       {'...'}
@@ -90,7 +90,7 @@ const SampleFeaturedCard = ({ featuredProducts, category_label, addItem }) => {
                   to={`/category/${category_label}/deals/${deal.id}`}
                   onClick={() => addItem(deal)}
                 >
-                  View Detailss
+                  View Details
                 </Button>
               </CardActions>
             </Card>

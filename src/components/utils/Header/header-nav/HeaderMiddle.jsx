@@ -52,9 +52,9 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
 
-  drawerPaperMobile: {
-    height: '100vh',
-  },
+  // drawerPaperMobile: {
+  //   height: '100vh',
+  // },
   drawerPaper: {
     position: 'fixed',
     top: '65px',

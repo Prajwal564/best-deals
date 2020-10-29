@@ -30,34 +30,28 @@ const App = ({ fetchCollectionsStart }) => {
   }, [fetchCollectionsStart]);
 
   return (
-    <>
-      <Header />
-      <div style={{ marginTop: '80px' }}>
-        <Switch>
-          <Route exact path='/' component={Homepage} />
-          <Route exact path='/deals' component={Deals} />
-          <Route exact path='/category/:cid/deals/:did' component={DealItem} />
-          <Route exact path='/category/:cid' component={DealCategory} />
-          <Route exact path='/history' component={HistoryPage} />
-          <Route exact path='/hearted' component={HeartedPage} />
+    <Switch>
+      <Route exact path='/' component={Homepage} />
+      <Route exact path='/deals' component={Deals} />
+      <Route exact path='/category/:cid/deals/:did' component={DealItem} />
+      <Route exact path='/category/:cid' component={DealCategory} />
+      <Route exact path='/history' component={HistoryPage} />
+      <Route exact path='/hearted' component={HeartedPage} />
 
-          {/* Accounts */}
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/signup' component={SignUp} />
-          <Route exact path='/reset-password' component={ResetPassword} />
-          <Route
-            exact
-            path='/password/reset/confirm/:uid/:token'
-            component={ResetPasswordConfirm}
-          />
-          <Route exact path='/activate/:uid/:token' component={Activate} />
-          {/* ---- */}
+      {/* Accounts */}
+      <Route exact path='/login' component={Login} />
+      <Route exact path='/signup' component={SignUp} />
+      <Route exact path='/reset-password' component={ResetPassword} />
+      <Route
+        exact
+        path='/password/reset/confirm/:uid/:token'
+        component={ResetPasswordConfirm}
+      />
+      <Route exact path='/activate/:uid/:token' component={Activate} />
+      {/* ---- */}
 
-          <Route path='*' component={PageNotFound} />
-        </Switch>
-      </div>
-      <Footer />
-    </>
+      <Route path='*' component={PageNotFound} />
+    </Switch>
   );
 };
 
