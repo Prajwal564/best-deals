@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     border: '0.5px solid #8C8A8A',
   },
   cardContent: {
-    height: '90px',
+    minHeight: '125px',
     position: 'relative',
   },
   priceText: {
@@ -79,7 +79,7 @@ const CategoryList = ({ category_label, products, addItem }) => {
                     component='h2'
                     style={{ textAlign: 'initial' }}
                   >
-                    {i.title.substring(0, 50)}...
+                    {i.title.substring(0, 70)}...
                   </Typography>
                   <div className={classes.priceText}>
                     <Typography

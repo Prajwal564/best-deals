@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     border: '0.5px solid #8C8A8A',
   },
   cardContent: {
-    height: '90px',
+    minHeight: '125px',
     position: 'relative',
   },
   priceText: {
