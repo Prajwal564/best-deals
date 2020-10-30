@@ -1,52 +1,79 @@
-import UserActionTypes from './user.types';
+import axios from 'axios';
+import {
+  SIGNUP_SUCCESS,
+  SIGNUP_FAIL,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  ACTIVATION_SUCCESS,
+  ACTIVATION_FAIL,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAIL,
+  RESET_PASSWORD_CONFIRM_SUCCESS,
+  RESET_PASSWORD_CONFIRM_FAIL,
+  LOGOUT,
+  USER_LOADED_SUCCESS,
+  USER_LOADED_FAIL,
+  AUTHENTICATED_FAIL,
+  AUTHENTICATED_SUCCESS,
+} from './user.types';
 
-export const googleSignInStart = () => ({
-  type: UserActionTypes.GOOGLE_SIGN_IN_START,
-});
+export const load_user = () => async (dispatch) => {
+  if (localStorage.getItem('access')) {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `JWT ${localStorage.getItem('access')}`,
+        Accept: 'application/json',
+      },
+    };
 
-export const emailSignInStart = (emailAndPassword) => ({
-  type: UserActionTypes.EMAIL_SIGN_IN_START,
-  payload: emailAndPassword,
-});
+    try {
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/auth/users/me/`,
+        config
+      );
 
-export const signInSuccess = (user) => ({
-  type: UserActionTypes.SIGN_IN_SUCCESS,
-  payload: user,
-});
+      dispatch({
+        type: USER_LOADED_SUCCESS,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: USER_LOADED_FAIL,
+      });
+    }
+  } else {
+    dispatch({
+      type: USER_LOADED_FAIL,
+    });
+  }
+};
 
-export const signInFailure = (error) => ({
-  type: UserActionTypes.SIGN_IN_FAILURE,
-  payload: error,
-});
+export const login = (email, password) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
 
-export const checkUserSession = () => ({
-  type: UserActionTypes.CHECK_USER_SESSION,
-});
+  const body = JSON.stringify({ email, password });
 
-export const signOutStart = () => ({
-  type: UserActionTypes.SIGN_OUT_START,
-});
+  try {
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_URL}/auth/jwt/create/`,
+      body,
+      config
+    );
 
-export const signOutSuccess = () => ({
-  type: UserActionTypes.SIGN_OUT_SUCCESS,
-});
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data,
+    });
 
-export const signOutFailure = (error) => ({
-  type: UserActionTypes.SIGN_OUT_FAILURE,
-  payload: error,
-});
-
-export const signUpStart = (userCredential) => ({
-  type: UserActionTypes.SIGN_UP_START,
-  payload: userCredential,
-});
-
-export const signUpSuccess = ({ user, additionalData }) => ({
-  type: UserActionTypes.SIGN_UP_SUCCESS,
-  payload: { user, additionalData },
-});
-
-export const signUpFailure = (error) => ({
-  type: UserActionTypes.SIGN_UP_FAILURE,
-  payload: error,
-});
+    dispatch(load_user());
+  } catch (err) {
+    dispatch({
+      type: LOGIN_FAIL,
+    });
+  }
+};
