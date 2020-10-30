@@ -1,20 +1,8 @@
-import axios from 'axios';
 import {
-  SIGNUP_SUCCESS,
-  SIGNUP_FAIL,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  ACTIVATION_SUCCESS,
-  ACTIVATION_FAIL,
-  RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FAIL,
-  RESET_PASSWORD_CONFIRM_SUCCESS,
-  RESET_PASSWORD_CONFIRM_FAIL,
-  LOGOUT,
   USER_LOADED_SUCCESS,
   USER_LOADED_FAIL,
-  AUTHENTICATED_FAIL,
-  AUTHENTICATED_SUCCESS,
 } from './user.types';
 
 const INITIAL_STATE = {
@@ -24,7 +12,7 @@ const INITIAL_STATE = {
   user: null,
 };
 
-export default function (state = INITIAL_STATE, action) {
+const userReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -63,4 +51,6 @@ export default function (state = INITIAL_STATE, action) {
     default:
       return state;
   }
-}
+};
+
+export default userReducer;

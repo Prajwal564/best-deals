@@ -8,7 +8,6 @@ import Hidden from '@material-ui/core/Hidden';
 import TopRightAd from '../utils/advertisement/TopRightAd';
 import BottomRightAd from '../utils/advertisement/BottomRightAd';
 import Header from '../utils/Header/Header';
-import Footer from '../utils/Footer/Footer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +42,6 @@ const Layout = ({ children }) => {
           </Grid>
         </Hidden>
       </div>
-      <Footer />
     </>
   );
 };

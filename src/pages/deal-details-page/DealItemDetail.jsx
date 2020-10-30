@@ -38,6 +38,20 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     width: '150px',
     marginRight: theme.spacing(2),
+
+    '&:hover': {
+      color: 'white',
+    },
+  },
+  favIcon: {
+    color: 'green',
+    backgroundColor: 'white',
+    border: '1px solid green',
+
+    '&:hover': {
+      backgroundColor: 'blue',
+      color: 'white',
+    },
   },
   button: {
     display: 'flex',
@@ -190,15 +204,7 @@ const DealItemDetail = (i) => {
           >
             See Deal
           </Button>
-          <Fab
-            aria-label='like'
-            size='small'
-            style={{
-              color: 'green',
-              backgroundColor: 'white',
-              border: '1px solid green',
-            }}
-          >
+          <Fab aria-label='like' size='small' className={classes.favIcon}>
             <FavoriteIcon onClick={() => addHearted(i)} />
           </Fab>
         </Grid>

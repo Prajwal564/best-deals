@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import SignInPopUp from './SignInPopUp';
+// import SignInPopUp from './SignInPopUp';
 import HeaderSearchBar from './SearchBar';
 import DrawerList from './DrawerList';
 import { ReactComponent as IncomeHonchoLogo } from './income_honcho.svg';
@@ -51,10 +51,6 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     flexShrink: 0,
   },
-
-  // drawerPaperMobile: {
-  //   height: '100vh',
-  // },
   drawerPaper: {
     position: 'fixed',
     top: '65px',
@@ -91,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HeaderMiddle = () => {
+const Navbar = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [opens, setOpens] = useState(false);
@@ -147,7 +143,11 @@ const HeaderMiddle = () => {
             {/* Search Icon */}
             <HeaderSearchBar />
             {/* // sign in popover */}
-            <SignInPopUp />
+            {/* <SignInPopUp /> */}
+
+            <Button component={Link} to='/login' disableRipple>
+              Sign In
+            </Button>
           </div>
         </Toolbar>
       </AppBar>
@@ -198,4 +198,4 @@ const HeaderMiddle = () => {
   );
 };
 
-export default HeaderMiddle;
+export default Navbar;

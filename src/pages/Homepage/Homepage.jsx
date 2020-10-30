@@ -5,6 +5,7 @@ import Hidden from '@material-ui/core/Hidden';
 
 import HotDeal from '../../components/utils/hot-deal/HotDeal';
 import FeaturedDeal from '../../components/utils/featured-deal/FeaturedDeal';
+import Footer from '../../components/utils/Footer/Footer';
 
 //advertisement
 import TopAd from '../../components/utils/advertisement/TopAd';
@@ -14,22 +15,25 @@ import Layout from '../../components/Layout';
 
 const Homepage = () => {
   return (
-    <Layout>
-      <Hidden smDown>
-        <TopAd />
-      </Hidden>
-      <Grid item xs={12}>
-        <HotDeal />
-      </Grid>
-      <Hidden only='xs'>
-        <Grid item xs={12} style={{ margin: '15px 0' }} align='center'>
-          <BottomAd />
+    <>
+      <Layout>
+        <Hidden smDown>
+          <TopAd />
+        </Hidden>
+        <Grid item xs={12}>
+          <HotDeal />
         </Grid>
-      </Hidden>
-      <Grid item xs={12}>
-        <FeaturedDeal />
-      </Grid>
-    </Layout>
+        <Hidden only='xs'>
+          <Grid item xs={12} style={{ margin: '15px 0' }} align='center'>
+            <BottomAd />
+          </Grid>
+        </Hidden>
+        <Grid item xs={12}>
+          <FeaturedDeal />
+        </Grid>
+      </Layout>
+      <Footer />
+    </>
   );
 };
 

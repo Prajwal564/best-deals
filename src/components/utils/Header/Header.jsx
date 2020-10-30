@@ -1,13 +1,9 @@
 import React from 'react';
 
-import HeaderMiddle from './header-nav/HeaderMiddle';
+import Navbar from './header-nav/Navbar';
 
 const Header = () => {
-  return (
-    <div>
-      <HeaderMiddle />
-    </div>
-  );
+  return <Navbar />;
 };
 
 export default Header;

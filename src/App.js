@@ -9,8 +9,6 @@ import DealItem from './pages/deal-details-page/DealItem';
 import Homepage from './pages/Homepage/Homepage';
 
 // components
-import Header from './components/utils/Header/Header';
-import Footer from './components/utils/Footer/Footer';
 import HeartedPage from './components/Hearted/HeartedPage';
 import HistoryPage from './components/History/HistoryPage';
 import PageNotFound from './components/404';
