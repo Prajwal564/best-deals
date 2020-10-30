@@ -51,6 +51,7 @@ const SampleFeaturedCard = ({ featuredProducts, category_label, addItem }) => {
                 component={Link}
                 to={`/category/${category_label}/deals/${deal.id}`}
                 onClick={() => addItem(deal)}
+                style={{ textDecoration: 'none' }}
               >
                 <CardMedia className={classes.media} image={deal.imageUrl} />
                 <CardContent style={{ padding: '2%' }} align='center'>

@@ -69,6 +69,7 @@ const DealList = ({ products, category_label, addItem }) => {
                   component={Link}
                   to={`/category/${category_label}/deals/${i.id}`}
                   onClick={() => addItem(i)}
+                  style={{ textDecoration: 'none' }}
                 >
                   <CardMedia
                     component='img'
