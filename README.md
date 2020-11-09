@@ -7,14 +7,14 @@
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install package for django project.
 
 ```bash
-cd backend/
+cd django/
 pip install requirements.txt
 ```
 
 Use the node pakage manager [npm] to install react dependencies.
 
 ```bash
-cd frontend/
+cd react/
 npm install
 ```
 
@@ -22,7 +22,7 @@ npm install
 
 #### For starting Django Project:
 
-```cd backend/ ```
+```cd django/ ```
 
 - Starting virtual environment for django 
     ```source venv/bin/activate```
@@ -36,7 +36,7 @@ npm install
 
 #### For starting React project:
 
-```cd frontend/ ```
+```cd react/ ```
 
 - Starting the app
     ```npm start```
