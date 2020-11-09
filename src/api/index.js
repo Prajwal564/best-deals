@@ -6,10 +6,9 @@ import axios from 'axios';
 
 const fetchDeals = async () => {
   // const response = await axios.get(proxyUrl + targetUrl);
-  const response = await axios.get('/api/deals');
+  const response = await axios.get(`/api/deals`);
 
   const data = await response.data;
-  console.log(data);
   const deal = data.offers;
 
   if (response.status >= 400) {

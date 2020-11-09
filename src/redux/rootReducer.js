@@ -9,9 +9,7 @@ import historyReducer from './history/history.reducer';
 const rootReducer = combineReducers({
   deal: dealReducer,
   user: userReducer,
-
   hearted: heartedReducer,
-
   history: historyReducer,
 });
 

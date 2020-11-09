@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import { login } from '../../redux/user/user.actions';
 import Layout from '../Layout';
 
-const Login = ({ login }) => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -17,12 +18,10 @@ const Login = ({ login }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     login(email, password);
   };
 
-  //Is the user authenticated
-  //Redirect to Homepage
+  if (isAuthenticated) return <Redirect to='/' />;
 
   return (
     <Layout>
@@ -68,8 +67,12 @@ const Login = ({ login }) => {
   );
 };
 
-// const mapStateToProps = state => ({
-//     //is authenticated?
-// })
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.user.isAuthenticated,
+});
 
-export default connect(null, { login })(Login);
+// const mapDispatchToProps = (dispatch) => ({
+//   login: (email, password) => dispatch(login(email, password)),
+// });
+
+export default connect(mapStateToProps, { login })(Login);

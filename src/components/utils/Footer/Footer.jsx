@@ -4,7 +4,6 @@ import React from 'react';
 import { Typography, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 import Hidden from '@material-ui/core/Hidden';
 
 //material-ui icons
@@ -37,10 +36,7 @@ const Footer = () => {
       <Container maxWidth='lg' className={classes.container}>
         <Typography variant='body2' className={classes.typo}>
           {'© '}
-          {new Date().getFullYear()}{' '}
-          <Link color='inherit' href='!#'>
-            Income Honcho.
-          </Link>
+          {new Date().getFullYear()} Income Honcho.
           {' All Rights Reserved.'}
         </Typography>
         <Hidden xsDown>
