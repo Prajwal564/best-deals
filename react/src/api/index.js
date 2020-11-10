@@ -6,7 +6,8 @@ import axios from 'axios';
 
 const fetchDeals = async () => {
   // const response = await axios.get(proxyUrl + targetUrl);
-  const response = await axios.get(`/api/deals`);
+  // const response = await axios.get(`/api/deals`);
+  const response = await axios.get(`http://localhost:8000/api/deals`);
 
   const data = await response.data;
   const deal = data.offers;
