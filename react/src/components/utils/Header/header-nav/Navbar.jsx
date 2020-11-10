@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../../../../redux/user/user.actions';
 
 // import SignInPopUp from './SignInPopUp';
 import HeaderSearchBar from './SearchBar';
@@ -87,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = () => {
+const Navbar = ({ isAuthenticated, logout }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [opens, setOpens] = useState(false);
@@ -99,6 +101,18 @@ const Navbar = () => {
   const handleDrawerClose = () => {
     setOpens(false);
   };
+
+  const authLinks = (
+    <Button component={Link} to='/' onClick={logout} disableRipple>
+      Logout
+    </Button>
+  );
+
+  const guestLinks = (
+    <Button component={Link} to='/login' disableRipple>
+      Sign In
+    </Button>
+  );
 
   return (
     <div className={classes.root}>
@@ -145,9 +159,8 @@ const Navbar = () => {
             {/* // sign in popover */}
             {/* <SignInPopUp /> */}
 
-            <Button component={Link} to='/login' disableRipple>
-              Sign In
-            </Button>
+            {/* Authentication Logic */}
+            {isAuthenticated ? authLinks : guestLinks}
           </div>
         </Toolbar>
       </AppBar>
@@ -198,4 +211,8 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.user.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);

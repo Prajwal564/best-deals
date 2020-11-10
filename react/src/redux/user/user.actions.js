@@ -104,9 +104,9 @@ export const login = (email, password) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      `http://localhost:8000/auth/jwt/create/`,
-      config,
-      body
+      'http://localhost:8000/auth/jwt/create/',
+      body,
+      config
     );
 
     dispatch({

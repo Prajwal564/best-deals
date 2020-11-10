@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2ebaa076.chunk.css",
+    "main.js": "/static/js/main.e61766ee.chunk.js",
+    "main.js.map": "/static/js/main.e61766ee.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.6cac83ed.js",
+    "runtime-main.js.map": "/static/js/runtime-main.6cac83ed.js.map",
+    "static/js/2.2d8d5bd1.chunk.js": "/static/js/2.2d8d5bd1.chunk.js",
+    "static/js/2.2d8d5bd1.chunk.js.map": "/static/js/2.2d8d5bd1.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.9e0f0c0b51cbafe52a44e37dc1eaa6e2.js": "/precache-manifest.9e0f0c0b51cbafe52a44e37dc1eaa6e2.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.2ebaa076.chunk.css.map": "/static/css/main.2ebaa076.chunk.css.map",
+    "static/js/2.2d8d5bd1.chunk.js.LICENSE.txt": "/static/js/2.2d8d5bd1.chunk.js.LICENSE.txt",
+    "static/media/bottom.svg": "/static/media/bottom.69a6fa1a.svg",
+    "static/media/bottomRight.svg": "/static/media/bottomRight.38e114f7.svg",
+    "static/media/income_honcho.9a5ea5cd.svg": "/static/media/income_honcho.9a5ea5cd.svg",
+    "static/media/top.svg": "/static/media/top.1223c721.svg",
+    "static/media/topRight.svg": "/static/media/topRight.b9828453.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6cac83ed.js",
+    "static/js/2.2d8d5bd1.chunk.js",
+    "static/css/main.2ebaa076.chunk.css",
+    "static/js/main.e61766ee.chunk.js"
+  ]
+}
